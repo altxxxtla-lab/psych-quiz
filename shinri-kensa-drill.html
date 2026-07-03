@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心理検査 暗記ドリル</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F4EE; --paper-2:#FBFAF6; --ink:#16243F; --ink-soft:#3a4860;
+    --muted:#6E6E66; --line:#DCDAD0; --blue:#2E5AA8; --green:#2C7A5E;
+    --green-bg:#E5F0EB; --red:#BF3B2B; --red-bg:#F6E6E2;
+    --shadow:0 1px 0 rgba(22,36,63,.04), 0 8px 28px -16px rgba(22,36,63,.28);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:"Noto Sans JP",sans-serif;color:var(--ink);background-color:var(--paper);
+    background-image:linear-gradient(rgba(46,90,168,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(46,90,168,.045) 1px, transparent 1px);
+    background-size:26px 26px;line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh;}
+  .wrap{max-width:680px;margin:0 auto;padding:24px 18px 64px}
+  .mono{font-family:"Space Mono",monospace}
+
+  .mast{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:26px}
+  .mast .eyebrow{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--blue);margin:0 0 6px}
+  .mast h1{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;
+    font-size:clamp(26px,7vw,38px);line-height:1.12;margin:0;letter-spacing:.01em}
+  .mast .sub{color:var(--muted);font-size:13px;margin-top:8px}
+
+  .card{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;
+    padding:22px;box-shadow:var(--shadow)}
+  .lead{font-size:15px;color:var(--ink-soft);margin:0 0 22px}
+
+  .seclabel{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted);margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  .seclabel::after{content:"";flex:1;height:1px;background:var(--line)}
+  .seclabel .mini{flex:none;display:flex;gap:10px}
+  .seclabel .mini button{background:none;border:none;color:var(--blue);cursor:pointer;
+    font-family:"Noto Sans JP",sans-serif;font-size:11px;letter-spacing:0;text-transform:none;padding:0}
+  .seclabel .mini button:hover{text-decoration:underline}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+  .chip{font-size:13px;font-weight:500;border:1px solid var(--line);background:var(--paper-2);
+    color:var(--ink-soft);border-radius:999px;padding:7px 13px;cursor:pointer;transition:all .15s;
+    display:inline-flex;align-items:center;gap:7px}
+  .chip .ct{font-family:"Space Mono",monospace;font-size:11px;color:var(--muted)}
+  .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .chip[aria-pressed="true"] .ct{color:rgba(255,255,255,.7)}
+  .chip:hover{border-color:var(--ink)}
+
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper-2)}
+  .seg button{border:none;background:transparent;padding:9px 18px;font-size:13px;
+    font-family:"Noto Sans JP",sans-serif;color:var(--ink-soft);cursor:pointer;border-right:1px solid var(--line)}
+  .seg button:last-child{border-right:none}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+  .opts-row{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin:2px 0 24px}
+  .toggle{display:inline-flex;align-items:center;gap:9px;font-size:13px;color:var(--ink-soft);cursor:pointer;user-select:none}
+  .toggle input{position:absolute;opacity:0;width:0;height:0}
+  .switch{width:40px;height:22px;border-radius:999px;background:var(--line);position:relative;transition:background .18s;flex:none}
+  .switch::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;
+    background:#fff;transition:transform .18s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+  .toggle input:checked + .switch{background:var(--green)}
+  .toggle input:checked + .switch::after{transform:translateX(18px)}
+  .toggle input:focus-visible + .switch{outline:2px solid var(--blue);outline-offset:2px}
+
+  .btn{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:16px;border:none;border-radius:11px;
+    padding:15px 22px;cursor:pointer;transition:transform .1s, filter .15s;display:inline-flex;
+    align-items:center;justify-content:center;gap:10px;width:100%}
+  .btn-primary{background:var(--ink);color:#fff}
+  .btn-primary:hover{filter:brightness(1.12)}
+  .btn-primary:active{transform:translateY(1px)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink)}
+  .btn[disabled]{opacity:.4;cursor:not-allowed}
+  .btn .ar{font-family:"Space Mono",monospace}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap}
+  .btnrow .btn{width:auto;flex:1;min-width:150px}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;font-family:"Space Mono",monospace;
+    font-size:12px;color:var(--muted);margin-bottom:10px}
+  .topbar b{color:var(--ink)}
+  .meter{height:5px;background:var(--line);border-radius:999px;overflow:hidden;margin-bottom:24px}
+  .meter > i{display:block;height:100%;background:var(--blue);border-radius:999px;transition:width .35s ease}
+  .qtag{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--blue);margin-bottom:10px}
+  .qtext{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:18px;line-height:1.6;margin:0 0 20px}
+  .choices{display:flex;flex-direction:column;gap:10px}
+  .choice{display:flex;gap:13px;align-items:flex-start;text-align:left;width:100%;background:var(--paper-2);
+    border:1px solid var(--line);border-radius:11px;padding:14px 15px;cursor:pointer;font-size:15px;
+    color:var(--ink);font-family:"Noto Sans JP",sans-serif;transition:border-color .12s, background .12s;line-height:1.55}
+  .choice:hover:not(:disabled){border-color:var(--ink)}
+  .choice:disabled{cursor:default}
+  .choice .key{font-family:"Space Mono",monospace;font-weight:700;font-size:13px;color:var(--blue);
+    flex:none;width:18px;text-align:center;margin-top:1px}
+  .choice.correct{background:var(--green-bg);border-color:var(--green)}
+  .choice.correct .key{color:var(--green)}
+  .choice.wrong{background:var(--red-bg);border-color:var(--red)}
+  .choice.wrong .key{color:var(--red)}
+  .choice .mark{margin-left:auto;font-weight:700;font-family:"Space Mono",monospace;flex:none}
+  .choice.correct .mark{color:var(--green)}
+  .choice.wrong .mark{color:var(--red)}
+  .choice:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+  .explain{margin-top:18px;border-left:3px solid var(--blue);background:rgba(46,90,168,.05);
+    border-radius:0 10px 10px 0;padding:13px 16px;font-size:14px;color:var(--ink-soft);
+    opacity:0;transform:translateY(4px);transition:opacity .25s, transform .25s}
+  .explain.show{opacity:1;transform:none}
+  .explain .h{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--blue);margin-bottom:5px;display:block}
+  .explain.bad{border-left-color:var(--red);background:var(--red-bg)}
+  .explain.bad .h{color:var(--red)}
+  .quiz-foot{margin-top:24px}
+
+  .ring-wrap{display:flex;flex-direction:column;align-items:center;text-align:center;padding:6px 0 8px}
+  .ring{position:relative;width:180px;height:180px}
+  .ring svg{transform:rotate(-90deg)}
+  .ring .read{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .ring .pct{font-family:"Space Mono",monospace;font-weight:700;font-size:42px;color:var(--ink);line-height:1}
+  .ring .pct span{font-size:18px}
+  .ring .frac{font-family:"Space Mono",monospace;font-size:12px;color:var(--muted);margin-top:6px}
+  .verdict{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:18px;margin:16px 0 4px}
+  .verdict + p{color:var(--muted);font-size:13px;margin:0}
+
+  .brow{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+  .brow:last-child{border-bottom:none}
+  .brow .name{font-size:14px;font-weight:500}
+  .brow .score{font-family:"Space Mono",monospace;font-size:13px;color:var(--ink-soft)}
+  .bbar{grid-column:1 / -1;height:6px;background:var(--line);border-radius:999px;overflow:hidden}
+  .bbar > i{display:block;height:100%;border-radius:999px;background:var(--green)}
+  .bbar > i.low{background:var(--red)} .bbar > i.mid{background:var(--blue)}
+
+  .review .ritem{border:1px solid var(--line);border-radius:11px;padding:15px;margin-bottom:12px;background:var(--paper-2)}
+  .review .rq{font-weight:500;font-size:14px;margin:0 0 9px;line-height:1.55}
+  .review .rq .n{font-family:"Space Mono",monospace;color:var(--red);margin-right:7px}
+  .review .ra{font-size:13px;margin:3px 0}
+  .review .ra .lab{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+  .review .ra.you{color:var(--red)} .review .ra.ok{color:var(--green)}
+  .review .rx{font-size:13px;color:var(--ink-soft);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+
+  .gap{height:26px}
+  .hidden{display:none !important}
+  .center-note{text-align:center;color:var(--muted);font-size:13px;margin-top:16px}
+  @media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
+  @media (max-width:480px){.wrap{padding:18px 14px 56px}.card{padding:18px}.qtext{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <p class="eyebrow">Psychological Tests · Memory Drill</p>
+    <h1>心理検査<br>暗記ドリル</h1>
+    <p class="sub">表3-1〜表7-2の検査をまるごと。全103問・8カテゴリ。1回20問から回せます。</p>
+  </header>
+
+  <!-- HOME -->
+  <section id="home" class="card">
+    <p class="lead">覚えたいカテゴリを選んで、1回の出題数を決めてスタート。発行年や所要時間より「何を測るか・適用年齢・その検査の特徴・カットオフ値」を厚めにしています。間違えた問題だけの復習もできます。</p>
+
+    <p class="seclabel">出題カテゴリ
+      <span class="mini"><button id="selAll" type="button">全部選ぶ</button><button id="selNone" type="button">解除</button></span>
+    </p>
+    <div class="chips" id="chips"></div>
+
+    <p class="seclabel">1回の出題数</p>
+    <div class="seg" id="limitSeg" style="margin-bottom:22px">
+      <button type="button" data-lim="20">20問</button>
+      <button type="button" data-lim="40" aria-pressed="true">40問</button>
+      <button type="button" data-lim="0">すべて</button>
+    </div>
+
+    <p class="seclabel">設定</p>
+    <div class="opts-row">
+      <label class="toggle"><input type="checkbox" id="shuffleToggle" checked><span class="switch"></span>問題をシャッフル</label>
+      <label class="toggle"><input type="checkbox" id="shuffleChoices" checked><span class="switch"></span>選択肢もシャッフル</label>
+    </div>
+
+    <button class="btn btn-primary" id="startBtn">スタート <span class="ar" id="startCount"></span></button>
+    <p class="center-note">短いセットを毎日まわすのが、いちばん定着します。</p>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="hidden">
+    <div class="topbar"><span><b id="qNow">1</b> / <span id="qTotal">40</span></span><span id="qRight">正解 0</span></div>
+    <div class="meter"><i id="meterFill" style="width:0%"></i></div>
+    <div class="card">
+      <div class="qtag"><span id="qCat">カテゴリ</span> · 4択</div>
+      <h2 class="qtext" id="qText">…</h2>
+      <div class="choices" id="qChoices"></div>
+      <div class="explain" id="qExplain"><span class="h" id="qExplainH">解説</span><span id="qExplainBody"></span></div>
+    </div>
+    <div class="quiz-foot"><button class="btn btn-primary hidden" id="nextBtn">次の問題 <span class="ar">→</span></button></div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="result" class="hidden">
+    <div class="card">
+      <div class="ring-wrap">
+        <div class="ring">
+          <svg width="180" height="180" viewBox="0 0 180 180">
+            <circle cx="90" cy="90" r="78" fill="none" stroke="var(--line)" stroke-width="14"></circle>
+            <circle id="ringFg" cx="90" cy="90" r="78" fill="none" stroke="var(--green)" stroke-width="14"
+              stroke-linecap="round" stroke-dasharray="490" stroke-dashoffset="490"></circle>
+          </svg>
+          <div class="read"><div class="pct" id="resPct">0<span>%</span></div><div class="frac" id="resFrac">0 / 0</div></div>
+        </div>
+        <div class="verdict" id="resVerdict">おつかれさま</div>
+        <p id="resBlurb"></p>
+      </div>
+    </div>
+    <div class="gap"></div>
+    <p class="seclabel">カテゴリ別の出来</p>
+    <div class="card" id="breakdown"></div>
+    <div class="gap"></div>
+    <div id="reviewWrap"><p class="seclabel">間違えた問題の復習</p><div class="review" id="review"></div></div>
+    <div class="gap"></div>
+    <div class="btnrow">
+      <button class="btn btn-primary" id="retryBtn">もう一度（同じ条件）</button>
+      <button class="btn btn-ghost" id="wrongBtn">間違いだけ復習</button>
+    </div>
+    <div style="height:10px"></div>
+    <button class="btn btn-ghost" id="homeBtn">設定を選び直す</button>
+  </section>
+</div>
+
+<script>
+const CAT = {
+  dev:"発達検査", iq:"知能検査", screen:"認知症・全般機能",
+  frontal:"前頭葉・遂行機能", visual:"注意・視空間・失語", memory:"記憶機能",
+  asd:"ASD関連", adhdld:"ADHD・LD関連"
+};
+const CAT_ORDER = ["dev","iq","screen","frontal","visual","memory","asd","adhdld"];
+
+// すべて4択。o[0] が正解（表示時にシャッフルされる）
+const QUESTIONS = [
+ // ---- 発達検査 ----
+ {c:"dev",q:"養育者への質問で「運動」「探索」「社会」「生活習慣」「言語」の5領域の発達年齢を測る検査は？",o:["乳幼児精神発達診断法","遠城寺式乳幼児分析的発達検査","DENVER II","新版K式発達検査2020"],e:"養育者への質問紙形式（間接検査法）。5領域の発達年齢とプロフィールが得られる。"},
+ {c:"dev",q:"0歳〜4歳7カ月が適用で、運動・社会性・言語の3分野を分析的にとらえ、発達グラフから発達障害の部位を把握できる検査は？",o:["遠城寺式乳幼児分析的発達検査","乳幼児精神発達診断法","KIDS乳幼児発達スケール","Bayley-III"],e:"6領域のプロフィールを発達グラフ化できるのが特徴。"},
+ {c:"dev",q:"約130項目を◯×で養育者などが回答し、簡単に発達年齢を求められる9領域の発達検査は？",o:["KIDS乳幼児発達スケール","遠城寺式乳幼児分析的発達検査","DENVER II","新版K式発達検査2020"],e:"◯の数を集計して発達年齢を算出する。"},
+ {c:"dev",q:"KIDS乳幼児発達スケールで「発達遅滞傾向児向き」とされるタイプは？",o:["タイプT","タイプA","タイプB","タイプC"],e:"A/B/Cは年齢帯で分かれ、Tは発達遅滞傾向児向き。"},
+ {c:"dev",q:"「姿勢・運動(P-M)」「認知・適応(C-A)」「言語・社会(L-S)」の3領域で発達年齢(DA)・発達指数(DQ)を出す検査は？",o:["新版K式発達検査2020","遠城寺式乳幼児分析的発達検査","KIDS乳幼児発達スケール","DENVER II"],e:"ビネーやゲゼルの発達理論をもとに作成された。"},
+ {c:"dev",q:"新版K式発達検査2020の実施順について正しいのは？",o:["実施順は決まっていない","必ず低年齢の課題から始める","領域ごとに順番が固定されている","必ず言語課題から始める"],e:"実施順は固定されていない。"},
+ {c:"dev",q:"子どもに直接実施する尺度と保護者の質問紙の両方をもち、計5尺度で成長チャートも作れる発達検査は？",o:["Bayley-III","乳幼児精神発達診断法","遠城寺式乳幼児分析的発達検査","DENVER II"],e:"認知・言語・運動（直接）＋社会-情動・適応行動（質問紙）の計5尺度。"},
+ {c:"dev",q:"Bayley-IIIで保護者が質問紙に回答する尺度はどれ？",o:["社会-情動尺度・適応行動尺度","認知尺度・言語尺度","運動尺度・認知尺度","言語尺度・運動尺度"],e:"認知・言語・運動は子どもに直接実施、社会-情動と適応行動は保護者質問紙。"},
+ {c:"dev",q:"「個人-社会」「微細運動-適応」「言語」「粗大運動」の4領域を、約15分・1次スクリーニングとして評価する発達判定法は？",o:["DENVER II","新版K式発達検査2020","KIDS乳幼児発達スケール","Bayley-III"],e:"各観察項目の不合格数で判定する。"},
+ {c:"dev",q:"DENVER IIの判定区分として正しいのは？",o:["正常／疑い／判定不能","軽度／中等度／重度","合格／不合格","陽性／陰性"],e:"不合格項目の数で3区分に判定する。"},
+ {c:"dev",q:"適用年齢が「0歳〜成人」と最も広い発達検査は？",o:["新版K式発達検査2020","遠城寺式乳幼児分析的発達検査","DENVER II","KIDS乳幼児発達スケール"],e:"0歳から成人まで適用できる。"},
+ {c:"dev",q:"KIDS乳幼児発達スケールのタイプCの適用年齢は？",o:["3歳0カ月〜6歳11カ月","0歳1カ月〜0歳11カ月","1歳0カ月〜2歳11カ月","0〜6歳"],e:"A=0歳台、B=1〜2歳台、C=3〜6歳台、T=遅滞傾向児向き。"},
+ {c:"dev",q:"乳幼児精神発達診断法の実施方法として正しいのは？",o:["日常生活行動を観察している養育者に質問する","子どもに直接課題を行わせる","行動観察のみで評定する","半構造化面接を行う"],e:"養育者への質問による間接検査法。"},
+ {c:"dev",q:"遠城寺式乳幼児分析的発達検査の所要時間の目安は？",o:["10〜15分","30分","50〜90分","約2時間"],e:"短時間で実施できる。"},
+
+ // ---- 知能検査 ----
+ {c:"iq",q:"田中ビネー知能検査Vで、2歳〜13歳11カ月の段階で算出される指標は？",o:["精神年齢(MA)と偏差知能指数(DIQ)","偏差知能指数(DIQ)のみ","発達指数(DQ)","全検査IQ(FSIQ)"],e:"14歳以上はMAを出さず4分野でDIQを算出する。"},
+ {c:"iq",q:"田中ビネーVで14歳以上に用いる4分野はどれ？",o:["結晶性／流動性／記憶／論理推理","言語／知覚／記憶／処理速度","継次／同時／計画／学習","運動／言語／社会／適応"],e:"14歳以上はこの4分野でDIQを算出する。"},
+ {c:"iq",q:"ウェクスラー式知能検査のうち「幼児用」にあたるのは？",o:["WPPSI-III","WISC-V","WAIS-IV","田中ビネーV"],e:"WPPSI=幼児用、WISC=児童用、WAIS=成人用。"},
+ {c:"iq",q:"ウェクスラー式知能検査のうち「成人用」にあたるのは？",o:["WAIS-IV","WPPSI-III","WISC-V","KABC-II"],e:"WAISが成人用。適用は16歳0カ月〜90歳11カ月。"},
+ {c:"iq",q:"WISC-Vの適用年齢は？",o:["5歳0カ月〜16歳11カ月","2歳6カ月〜7歳3カ月","16歳0カ月〜90歳11カ月","2歳〜成人"],e:"児童用ウェクスラー。"},
+ {c:"iq",q:"WAIS-IVが算出する5つの合成得点に含まれないのは？",o:["流動性推理指標(FRI)","全検査IQ(FSIQ)","言語理解指標(VCI)","処理速度指標(PSI)"],e:"WAIS-IVはFSIQ・VCI・PRI・WMI・PSIの5つ。FRIはWISC-Vの指標。"},
+ {c:"iq",q:"「CHC理論をもとに改訂され、流動性能力が強調されるようになった」と説明される児童用知能検査は？",o:["WISC-V","WAIS-IV","田中ビネーV","グッドイナフ人物画知能検査"],e:"WISC-VはCHC理論を反映している。"},
+ {c:"iq",q:"WISC-Vで導入された、流動性推理を表す主要指標の略号は？",o:["FRI","VCI","WMI","PSI"],e:"FRI=Fluid Reasoning Index（流動性推理指標）。"},
+ {c:"iq",q:"5分で実施でき、50項目を採点してMA・DAM-IQを算出し、言語反応を必要としない知能検査は？",o:["グッドイナフ人物画知能検査","田中ビネーV","WPPSI-III","DN-CAS"],e:"人物画を描かせるため言語反応を要さず、低年齢の子どもでも可能。"},
+ {c:"iq",q:"ルリア理論とCHC理論の2つを基盤とし、認知処理過程尺度と習得尺度をもつ検査は？",o:["KABC-II","DN-CAS","WISC-V","田中ビネーV"],e:"認知能力（認知処理過程）と学力（習得度）の差異・関連要因を分析できる。"},
+ {c:"iq",q:"KABC-IIの認知処理過程尺度（カウフマンモデル）を構成する4尺度は？",o:["継次／同時／学習／計画","言語／知覚／記憶／処理速度","プランニング／注意／同時／継次","結晶性／流動性／記憶／論理推理"],e:"カウフマンモデルの4尺度。習得尺度は語彙・読み・書き・算数。"},
+ {c:"iq",q:"PASS理論に基づき、プランニング・注意・同時処理・継次処理の4機能を測る検査は？",o:["DN-CAS","KABC-II","WISC-V","WAIS-IV"],e:"PASS=Planning／Attention／Simultaneous／Successive。"},
+ {c:"iq",q:"DN-CASのPASSのうち「同時処理」を表す英語は？",o:["Simultaneous","Successive","Planning","Attention"],e:"同時処理=Simultaneous、継次処理=Successive。"},
+ {c:"iq",q:"KABC-IIの適用年齢は？",o:["2歳6カ月〜18歳11カ月","5歳0カ月〜16歳11カ月","5歳0カ月〜17歳11カ月","2歳〜成人"],e:"幼児から青年まで適用できる。"},
+ {c:"iq",q:"DN-CASの適用年齢は？",o:["5歳0カ月〜17歳11カ月","2歳6カ月〜18歳11カ月","16歳0カ月〜90歳11カ月","0歳〜成人"],e:"学齢期が中心。"},
+ {c:"iq",q:"表中で最も発行年が新しい知能検査は？",o:["田中ビネー知能検査V（2024年）","WISC-V（2021年）","WAIS-IV（2018年）","KABC-II（2013年）"],e:"田中ビネーVが2024年で最新。"},
+ {c:"iq",q:"WPPSI-IIIの適用年齢は？",o:["2歳6カ月〜7歳3カ月","5歳0カ月〜16歳11カ月","16歳0カ月〜90歳11カ月","3歳〜8歳6カ月"],e:"幼児用ウェクスラー。"},
+
+ // ---- 認知症・全般機能 ----
+ {c:"screen",q:"認知症鑑別で使われ、言語性検査のみで構成されベッドサイドで実施できる検査は？",o:["HDS-R（長谷川式）","MMSE-J","MoCA-J","COGNISTAT"],e:"言語性のみなので動作課題が難しい人にも実施しやすい。"},
+ {c:"screen",q:"HDS-Rの得点範囲とカットオフの組み合わせで正しいのは？",o:["0-30点・カットオフ20/21点","0-30点・カットオフ23/24点","0-18点・カットオフ11/12点","0-70点・カットオフ25/26点"],e:"20点以下が認知症疑い。"},
+ {c:"screen",q:"MMSE-Jで「健常」と「軽度認知障害」を分けるカットオフは？",o:["27/28点","23/24点","20/21点","25/26点"],e:"27点以下が軽度認知障害疑い。23/24点は軽度ADとの境界。"},
+ {c:"screen",q:"MMSE-Jで「軽度認知障害」と「軽度アルツハイマー病」を分けるカットオフは？",o:["23/24点","27/28点","20/21点","25/26点"],e:"23点以下が軽度アルツハイマー病疑い。"},
+ {c:"screen",q:"MoCA-Jのカットオフ値は？",o:["25/26点","23/24点","20/21点","27/28点"],e:"25点以下が軽度認知障害（MCI）疑い。"},
+ {c:"screen",q:"MoCA-Jで教育歴12年以下の場合に行う補正は？",o:["30点満点でない場合に1点を加点する","一律で2点減点する","補正は行わない","所要時間を延長する"],e:"教育歴の影響を是正するための加点。"},
+ {c:"screen",q:"HDS-R・MMSE-J・MoCA-Jに共通する得点範囲は？",o:["0-30点","0-18点","0-24点","0-70点"],e:"いずれも満点30点。"},
+ {c:"screen",q:"3領域の一般因子と5領域の認知機能を評価し、重症度を障害なし/軽度/中等度/重度でみる検査は？",o:["COGNISTAT","HDS-R","MoCA-J","FAB"],e:"スクリーンメトリック方式をとる。"},
+ {c:"screen",q:"アルツハイマー病に対する塩酸ドネペジルの薬理効果測定を主目的とする検査は？",o:["ADAS","MMSE-J","HDS-R","COGNISTAT"],e:"認知機能下位尺度ADAS-Jcog.が用いられることが多い。"},
+ {c:"screen",q:"ADASの認知機能下位尺度（ADAS-Jcog.）の得点範囲は？",o:["0-70点","0-30点","0-50点","0-18点"],e:"非認知機能下位尺度（ADAS-Jnoncog.）は0-50点。"},
+ {c:"screen",q:"ADASは失点方式である。得点と障害程度の関係で正しいのは？",o:["高得点ほど障害の程度が高度","低得点ほど障害が高度","得点と障害は無関係","満点が最も健常"],e:"失点方式なので、点が高い＝失点が多い＝重度。"},
+ {c:"screen",q:"軽度認知障害（MCI）の検出を主な目的として考案された検査は？",o:["MoCA-J","HDS-R","COGNISTAT","FAB"],e:"MoCA-JはMCI検出を目的に開発された。"},
+ {c:"screen",q:"COGNISTATの重症度評価の段階は？",o:["障害なし／軽度／中等度／重度","正常／境界／異常","正常／疑い／判定不能","陽性／陰性"],e:"障害の程度を段階的に評価する。"},
+
+ // ---- 前頭葉・遂行機能 ----
+ {c:"frontal",q:"6の下位検査からなり得点範囲0-18点、高齢者では11-12点あたりがカットオフとなる前頭葉機能検査は？",o:["FAB","WCST","BADS","TMT-J"],e:"その点数以下が前頭葉機能障害疑い。"},
+ {c:"frontal",q:"もともと128枚、新修正法（慶應版）では48枚のカードを用い、概念の転換を評価する検査は？",o:["WCST","FAB","TMT-J","BADS"],e:"ウィスコンシンカード分類検査。前頭葉機能の注意や概念の転換をみる。"},
+ {c:"frontal",q:"WCSTが主に評価するのは？",o:["前頭葉機能の注意や概念の転換","半側空間無視","失語症","視覚記銘力"],e:"セットの切り替え（概念の転換）が代表的。"},
+ {c:"frontal",q:"partAとpartBがあり、2セット用意され学習効果を排除して再検査でき、正常/境界/異常を判定する検査は？",o:["TMT-J","WCST","FAB","SPTA"],e:"適用は20〜89歳。"},
+ {c:"frontal",q:"日常生活上の遂行機能を総合的に評価するために考案され、総プロフィール得点0-24点をもつ検査は？",o:["BADS","FAB","WCST","TMT-J"],e:"得点はパーセンタイルや標準化得点に変換できる。"},
+ {c:"frontal",q:"失行を中心とした高次動作障害を検索する目的で、顔面動作や上肢慣習的動作など13の下位検査からなる検査は？",o:["SPTA","FAB","BADS","WCST"],e:"標準高次動作性検査。"},
+ {c:"frontal",q:"TMT-Jの適用年齢は？",o:["20〜89歳","5歳0カ月〜16歳11カ月","16〜74歳","8〜80歳"],e:"成人〜高齢者が対象。"},
+ {c:"frontal",q:"「自ら目標を設定し計画を立て、行動を効果的に行う能力」を総合的にみるために考案された検査は？",o:["BADS","FAB","TMT-J","SPTA"],e:"日常生活の遂行機能評価に特化している。"},
+
+ // ---- 注意・視空間・失語 ----
+ {c:"visual",q:"半側空間無視の症状と日常生活上の障害を予測する目的で開発された検査は？",o:["BIT","CAT-R・CAS","CDT","VPTA"],e:"行動性無視検査。注意の方向性の障害を評価する。"},
+ {c:"visual",q:"成人の脳損傷者の注意障害や意欲・自発性の低下を臨床的・定量的に評価する検査は？",o:["CAT-R・CAS","BIT","RCPM","WAB"],e:"注意・集中力機能検査。"},
+ {c:"visual",q:"時計を描かせる/模写させ、盤面の構成・数字・針を10点満点で評価する検査は？",o:["CDT","BIT","RCPM","VPTA"],e:"時計描画検査。ルーローらの方法がよく使われる。"},
+ {c:"visual",q:"CDTで区別される、口頭教示による描画と模写による描画の2種類は？",o:["Command CDTとCopy CDT","partAとpartB","即時再生と遅延再生","有関係対語と無関係対語"],e:"Command＝口頭教示、Copy＝模写。"},
+ {c:"visual",q:"積木模様の組み合わせだけで一般知能としてのKohs IQを算出する非言語的知能検査は？",o:["コース立方体組み合わせテスト","RCPM","CDT","VPTA"],e:"後頭葉背側経路の視空間認知構成や心的回転の評価にも使われる。"},
+ {c:"visual",q:"コース立方体組み合わせテストがもともと評価対象としたのは？",o:["聾唖者・聴覚障害者などの非言語的知能","失語症患者の言語機能","高齢者の記憶","半側空間無視"],e:"言語を介さず知能を測れる。"},
+ {c:"visual",q:"36点満点で、WAISの全検査知能指数（TIQ）との相関図から推定IQを算出できる検査は？",o:["RCPM","コース立方体組み合わせテスト","CDT","BIT"],e:"レーヴン色彩マトリックス検査。視覚的課題の演繹的推理能力をみる。"},
+ {c:"visual",q:"視覚失認・視空間失認を中心とした高次視知覚機能を包括的に把握する成人用テスト・バッテリーは？",o:["VPTA","RCPM","CDT","コース立方体組み合わせテスト"],e:"標準高次視知覚検査。"},
+ {c:"visual",q:"失語指数や大脳皮質指数が算出でき、失語症の回復・憎悪を評価しやすい包括的失語症検査は？",o:["WAB","SLTA","VPTA","BIT"],e:"左右それぞれの大脳皮質指数を出せる。"},
+ {c:"visual",q:"聴く・話す・読む・書く・計算の5側面、計26項目の下位検査からなる包括的失語症検査は？",o:["SLTA","WAB","VPTA","RCPM"],e:"標準失語症検査。"},
+ {c:"visual",q:"WABとSLTAに共通するのは何の検査であることか？",o:["失語症検査","視空間認知機能検査","記憶機能検査","注意機能検査"],e:"どちらも包括的な失語症検査。"},
+ {c:"visual",q:"Kohs IQという指標が関係する検査は？",o:["コース立方体組み合わせテスト","RCPM","WAB","CDT"],e:"積木模様の組み合わせから一般知能を算出する。"},
+
+ // ---- 記憶機能 ----
+ {c:"memory",q:"言語性記憶・視覚性記憶・一般的記憶・注意/集中力・遅延再生の5指標を算出する記憶検査は？",o:["WMS-R","三宅式言語記銘力検査","S-PA","BVRT"],e:"ウェクスラー記憶検査。平均100・SD15。"},
+ {c:"memory",q:"WMS-Rの適用年齢は？",o:["16〜74歳","8〜80歳","16〜84歳","5〜18歳"],e:"成人が中心。"},
+ {c:"memory",q:"有関係対語10対・無関係対語10対を各3回ずつ施行する記憶検査は？",o:["三宅式言語記銘力検査","S-PA","WMS-R","RBMT"],e:"対語の記銘を測る。"},
+ {c:"memory",q:"三宅式言語記銘力検査で、アルコール依存症やCO中毒後遺症において著しく低下するのは？",o:["無関係対語の成績","有関係対語の成績","視覚記銘力","展望記憶"],e:"有関係対語と無関係対語の成績が大きく乖離し、無関係対語が低下する。"},
+ {c:"memory",q:"三宅式と異なり系列ごとに順序が変化するため、初頭効果や親近効果（系列位置効果）が出にくい記憶検査は？",o:["S-PA","三宅式言語記銘力検査","BVRT","ROCF"],e:"標準言語性対連合学習検査。"},
+ {c:"memory",q:"10枚の図版を即時再生・模写・遅延再生させ、図版が3種類あり学習効果を排除して再検査できる検査は？",o:["BVRT","ROCF","WMS-R","RBMT"],e:"ベントン視覚記銘検査。視空間認知や視覚記銘力をみる。"},
+ {c:"memory",q:"複雑図形を模写させ、3分後・30分後に遅延再生させ、18ユニットを計36点満点で採点する検査は？",o:["ROCF","BVRT","WMS-R","S-PA"],e:"Rey-Osterrieth複雑図形検査。"},
+ {c:"memory",q:"日常記憶（生活障害）を定量化でき、展望記憶機能を測定できる、並行検査4セットの記憶検査は？",o:["RBMT","WMS-R","三宅式言語記銘力検査","BVRT"],e:"リバーミード行動記憶検査。"},
+ {c:"memory",q:"他の神経心理検査にみられない「展望記憶」の測定ができる点が特徴の検査は？",o:["RBMT","ROCF","S-PA","BVRT"],e:"将来の予定を覚えておく記憶（展望記憶）を測れる。"},
+ {c:"memory",q:"系列位置効果（初頭効果・親近効果）が出にくいよう記憶素材が工夫された検査は？",o:["S-PA","三宅式言語記銘力検査","ROCF","WMS-R"],e:"系列ごとに順序が変化する。"},
+ {c:"memory",q:"即時再生・遅延再生に加えて「模写」もさせ、視覚認知再構成の側面も評価する図版検査は？",o:["BVRT","ROCF","RBMT","WMS-R"],e:"BVRTは即時再生・模写・遅延再生で評価する。"},
+
+ // ---- ASD関連 ----
+ {c:"asd",q:"16〜30カ月対象、全23項目を保護者が記入し、陽性ケースに約1〜2カ月後の電話面接を行う一次スクリーニングは？",o:["M-CHAT","AQ","PARS-TR","CARS2日本語版"],e:"乳幼児期の一次スクリーニング。"},
+ {c:"asd",q:"M-CHATでASDの疑いと判定される基準は？",o:["全23項目中3項目以上不通過、または重要6項目中2項目以上不通過","全23項目すべて不通過","半数以上の項目で不通過","カットオフ26点を超える"],e:"2段階の基準でスクリーニングする。"},
+ {c:"asd",q:"「社会的スキル」「注意の切り替え」「細部への注意」「コミュニケーション」「想像力」の5下位尺度をもつ検査は？",o:["AQ","M-CHAT","PARS-TR","ADOS-2"],e:"知的障害のないASDが疑われる青年・成人が対象。"},
+ {c:"asd",q:"AQ-J（栗田らの日本版）のカットオフ値は？",o:["26点","33点","20点","13点"],e:"AQ日本語版（若林ら）は33点、AQ児童用は20点。"},
+ {c:"asd",q:"AQ日本語版（若林ら）のカットオフ値は？",o:["33点","26点","20点","30点"],e:"AQ-Jは26点、AQ児童用は20点。"},
+ {c:"asd",q:"AQ児童用のカットオフ値は？",o:["20点","26点","33点","23点"],e:"児童用は養育者による他者評定式。"},
+ {c:"asd",q:"幼児期ピーク得点と現在得点のカットオフで自閉症特性の強さを判定する、養育者対象の半構造化面接は？",o:["PARS-TR","ADOS-2","M-CHAT","CARS2日本語版"],e:"3歳以上が対象。"},
+ {c:"asd",q:"行動観察と保護者からの情報を総合し、特別な用具を要さず短時間で実施でき、言語水準によらず評定できるASD評定尺度は？",o:["CARS2日本語版","ADI-R","AQ","M-CHAT"],e:"小児自閉症評定尺度第2版。重症度も測定できる。"},
+ {c:"asd",q:"「面接プロトコル」（93項目）と「包括的アルゴリズム用紙」を用い、回答者の叙述をコード化して評定する、世界的標準の診断補助検査は？",o:["ADI-R","ADOS-2","PARS-TR","M-CHAT"],e:"ADI-Rの日本語版。DSM-IV・ICD-10で診断的意義があるとされる。"},
+ {c:"asd",q:"5種類のモジュールから対象者に合った1つを選んで実施する半構造化観察検査は？",o:["ADOS-2","ADI-R","PARS-TR","AQ"],e:"行動観察を5領域で数値的に評価する。"},
+ {c:"asd",q:"ADOS-2が行動観察で評価する5領域に含まれないのは？",o:["読み書き能力","言語と意思伝達","相互的対人関係","常同行動と限定的興味"],e:"A言語と意思伝達／B相互的対人関係／C遊び・想像力／D常同行動と限定的興味／E他の異常行動。"},
+ {c:"asd",q:"回答・評定/採点に1時間半〜2時間半を要する、最も時間のかかるASD診断補助検査は？",o:["ADI-R","ADOS-2","M-CHAT","AQ"],e:"93項目の面接をコード化するため時間がかかる。"},
+ {c:"asd",q:"M-CHATの記入者は誰か？",o:["保護者","本人","教師","心理士のみ"],e:"保護者が記入する質問紙。"},
+ {c:"asd",q:"CARS2日本語版の適用年齢は？",o:["2歳以上","16歳以上","3歳以上","精神年齢2歳0カ月以上"],e:"行動観察と保護者情報で重症度も測定できる。"},
+
+ // ---- ADHD・LD関連 ----
+ {c:"adhdld",q:"DSMの診断基準をもとに不注意・多動性—衝動性を評価する、家庭版・学校版がある質問紙は？",o:["ADHD-RS","CAARS","Conners3","STRAW-R"],e:"保護者・教師からの症状報告でスクリーニングできる。"},
+ {c:"adhdld",q:"ADHD-RSの適用年齢は？",o:["5〜18歳","18歳以上","6〜18歳","小学1年〜高校3年"],e:"子ども対象のスクリーニング尺度。"},
+ {c:"adhdld",q:"ADHD-RSで得られる2つのスコアは？",o:["不注意スコアと多動性—衝動性スコア","結晶性と流動性","言語性と動作性","即時再生と遅延再生"],e:"それぞれのパーセンタイル値も得られる。"},
+ {c:"adhdld",q:"18歳以上対象で「不注意/記憶の問題」「多動性/落ち着きのなさ」「衝動性/情緒不安定」「自己概念の問題」の4下位項目をもつ検査は？",o:["CAARS","ADHD-RS","Conners3","LDI-R"],e:"「ADHD指標」も算出できる。"},
+ {c:"adhdld",q:"CAARSが取り入れている、回答が適切かを確認するための指標は？",o:["矛盾指標","ADHD指標","パーセンタイル値","カットオフ指標"],e:"自己記入式で適切に回答されているかを確認する。"},
+ {c:"adhdld",q:"CAARSで自己評価式の回答が十分でない場合に推奨されるのは？",o:["2名以上の人に観察者評価式の記入を依頼する","再度本人に記入させる","検査を中止する","ADHD指標のみで判定する"],e:"他者評価で補うことが推奨される。"},
+ {c:"adhdld",q:"素行障害や反抗挑戦性障害の症状スケール、不安・抑うつのスクリーニングも含み、保護者・教師・本人それぞれの版がある検査は？",o:["Conners3","ADHD-RS","CAARS","STRAW-R"],e:"多面的評価が可能だが回答数が多く採点は複雑。"},
+ {c:"adhdld",q:"Conners3の採点・評価についての特徴は？",o:["回答数が多く採点は複雑だが多面的な評価ができる","5分で簡単に採点できる","言語性のみで構成される","面接で実施する"],e:"多面的なぶん負担は大きい。"},
+ {c:"adhdld",q:"音読の流暢性・正確性やRAN、計算を測り、ひらがな・カタカナ・漢字の3表記を比較できる検査は？",o:["STRAW-R","LDI-R","Conners3","ADHD-RS"],e:"改訂版標準読み書きスクリーニング検査。"},
+ {c:"adhdld",q:"STRAW-Rの結果が客観的資料として役立つ場面は？",o:["高校・大学入試で試験時間の延長を希望する際","認知症の重症度判定","自閉症の重症度判定","前頭葉機能の評価"],e:"速読課題に文章課題を含むため。"},
+ {c:"adhdld",q:"STRAW-Rが比較できる3種類の表記は？",o:["ひらがな・カタカナ・漢字","数字・記号・文字","縦書き・横書き・点字","音読・黙読・書取"],e:"どの表記から練習すればよいかの指標になる。"},
+ {c:"adhdld",q:"基礎的学力（聞く・話す・読む・書く等）と行動・社会性の10領域を測り、LD児の特定領域のつまずきとの一致度をみる調査票は？",o:["LDI-R","STRAW-R","Conners3","KABC-II"],e:"LD判断のための調査票。パーセンタイル段階で視覚的にとらえる。"},
+ {c:"adhdld",q:"LDI-Rの適用年齢は？",o:["小学校1年生〜中学校3年生","5〜18歳","18歳以上","小学1年〜高校3年"],e:"義務教育段階が中心。"},
+ {c:"adhdld",q:"Conners3の本人用の適用年齢は？",o:["8〜18歳","6〜18歳","5〜18歳","18歳以上"],e:"保護者・教師用は6〜18歳、本人用は8〜18歳。"}
+];
+
+// ---------- state ----------
+let selectedCats = new Set();
+let qLimit = 40;              // 0 = すべて
+let session = [], idx = 0, correctCount = 0;
+const $ = id => document.getElementById(id);
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+
+function buildChips(){
+  const counts={}; QUESTIONS.forEach(q=>counts[q.c]=(counts[q.c]||0)+1);
+  const wrap=$("chips"); wrap.innerHTML="";
+  CAT_ORDER.forEach(k=>{
+    const b=document.createElement("button");
+    b.className="chip"; b.type="button"; b.setAttribute("aria-pressed","false"); b.dataset.cat=k;
+    b.innerHTML=`${CAT[k]} <span class="ct">${counts[k]||0}</span>`;
+    b.addEventListener("click",()=>{
+      if(selectedCats.has(k)){selectedCats.delete(k);b.setAttribute("aria-pressed","false");}
+      else{selectedCats.add(k);b.setAttribute("aria-pressed","true");}
+      updateStartCount();
+    });
+    wrap.appendChild(b);
+  });
+  updateStartCount();
+}
+function setAllChips(on){
+  selectedCats = on ? new Set(CAT_ORDER) : new Set();
+  [...$("chips").children].forEach(b=>b.setAttribute("aria-pressed", on?"true":"false"));
+  updateStartCount();
+}
+function pool(){ return selectedCats.size? QUESTIONS.filter(q=>selectedCats.has(q.c)) : QUESTIONS.slice(); }
+function plannedCount(){ const n=pool().length; return qLimit>0? Math.min(qLimit,n) : n; }
+function updateStartCount(){ const n=plannedCount(); $("startCount").textContent=`→ ${n}問`; $("startBtn").disabled=n===0; }
+
+$("limitSeg").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  qLimit=parseInt(b.dataset.lim,10);
+  [...$("limitSeg").children].forEach(x=>x.setAttribute("aria-pressed","false"));
+  b.setAttribute("aria-pressed","true"); updateStartCount();
+});
+$("selAll").addEventListener("click",()=>setAllChips(true));
+$("selNone").addEventListener("click",()=>setAllChips(false));
+
+function startSession(list){
+  let qs = $("shuffleToggle").checked ? shuffle(list) : list.slice();
+  if(qLimit>0) qs = qs.slice(0,qLimit);
+  const shufC=$("shuffleChoices").checked;
+  session = qs.map(q=>{
+    let order=q.o.map((_,i)=>i);
+    if(shufC) order=shuffle(order);
+    return {q, order, picked:null, correctIdx:order.indexOf(0)};
+  });
+  idx=0; correctCount=0;
+  $("home").classList.add("hidden"); $("result").classList.add("hidden"); $("quiz").classList.remove("hidden");
+  $("qTotal").textContent=session.length;
+  renderQ(); window.scrollTo({top:0});
+}
+function renderQ(){
+  const s=session[idx];
+  $("qNow").textContent=idx+1;
+  $("qRight").textContent=`正解 ${correctCount}`;
+  $("meterFill").style.width=`${(idx/session.length)*100}%`;
+  $("qCat").textContent=CAT[s.q.c];
+  $("qText").textContent=s.q.q;
+  const box=$("qChoices"); box.innerHTML="";
+  const keys=["A","B","C","D"];
+  s.order.forEach((origIdx,pos)=>{
+    const btn=document.createElement("button"); btn.className="choice"; btn.type="button";
+    btn.innerHTML=`<span class="key">${keys[pos]||""}</span><span>${s.q.o[origIdx]}</span>`;
+    btn.addEventListener("click",()=>answer(pos,btn));
+    box.appendChild(btn);
+  });
+  const ex=$("qExplain"); ex.classList.remove("show","bad");
+  $("nextBtn").classList.add("hidden");
+}
+function answer(pos){
+  const s=session[idx]; if(s.picked!==null) return;
+  s.picked=pos;
+  const buttons=[...$("qChoices").children];
+  const right=pos===s.correctIdx; if(right) correctCount++;
+  buttons.forEach((b,i)=>{
+    b.disabled=true;
+    if(i===s.correctIdx){b.classList.add("correct");b.insertAdjacentHTML("beforeend",'<span class="mark">正解</span>');}
+    else if(i===pos){b.classList.add("wrong");b.insertAdjacentHTML("beforeend",'<span class="mark">×</span>');}
+  });
+  const ex=$("qExplain");
+  $("qExplainH").textContent=right?"正解 — 解説":"おしい — 解説";
+  $("qExplainBody").textContent=" "+s.q.e;
+  ex.classList.toggle("bad",!right); ex.classList.add("show");
+  $("qRight").textContent=`正解 ${correctCount}`;
+  const nb=$("nextBtn"); nb.classList.remove("hidden");
+  nb.querySelector(".ar").textContent=(idx===session.length-1)?"":"→";
+  nb.childNodes[0].nodeValue=(idx===session.length-1)?"結果を見る ":"次の問題 ";
+  nb.focus();
+}
+$("nextBtn").addEventListener("click",()=>{
+  if(idx===session.length-1){showResult();}
+  else{idx++;renderQ();window.scrollTo({top:0,behavior:"smooth"});}
+});
+function showResult(){
+  $("quiz").classList.add("hidden"); $("result").classList.remove("hidden");
+  const total=session.length, pct=Math.round((correctCount/total)*100);
+  $("resPct").innerHTML=`${pct}<span>%</span>`; $("resFrac").textContent=`${correctCount} / ${total}`;
+  const C=2*Math.PI*78, fg=$("ringFg");
+  fg.style.strokeDasharray=C; fg.style.strokeDashoffset=C;
+  fg.setAttribute("stroke", pct>=80?"var(--green)":pct>=50?"var(--blue)":"var(--red)");
+  requestAnimationFrame(()=>{fg.style.transition="stroke-dashoffset .9s ease";fg.style.strokeDashoffset=C*(1-pct/100);});
+  let v,b;
+  if(pct>=90){v="ほぼ完璧";b="この調子。間違えた検査だけ最終チェックすれば仕上がりです。";}
+  else if(pct>=70){v="いい線いってる";b="大枠は入っています。取りこぼした検査を復習で詰めましょう。";}
+  else if(pct>=50){v="あと一歩";b="半分は取れています。弱いカテゴリだけ繰り返すと一気に伸びます。";}
+  else{v="ここからが伸びどき";b="まずは間違えた問題の解説を通読。カテゴリを1つに絞って20問ずつが効きます。";}
+  $("resVerdict").textContent=v; $("resBlurb").textContent=b;
+  const stat={};
+  session.forEach(s=>{const k=s.q.c;stat[k]=stat[k]||{n:0,ok:0};stat[k].n++;if(s.picked===s.correctIdx)stat[k].ok++;});
+  const bd=$("breakdown"); bd.innerHTML="";
+  CAT_ORDER.filter(k=>stat[k]).forEach(k=>{
+    const {n,ok}=stat[k], p=Math.round((ok/n)*100), cls=p>=80?"":p>=50?"mid":"low";
+    const row=document.createElement("div"); row.className="brow";
+    row.innerHTML=`<span class="name">${CAT[k]}</span><span class="score">${ok}/${n} · ${p}%</span><span class="bbar"><i class="${cls}" style="width:${p}%"></i></span>`;
+    bd.appendChild(row);
+  });
+  const wrong=session.filter(s=>s.picked!==s.correctIdx);
+  const rWrap=$("reviewWrap"), rv=$("review");
+  if(wrong.length===0){
+    rWrap.innerHTML='<p class="seclabel">復習</p><div class="card" style="text-align:center;color:var(--green);font-weight:700">全問正解！復習はなしです 🎯</div>';
+  }else{
+    rv.innerHTML="";
+    wrong.forEach(s=>{
+      const yourText=s.picked!==null?s.q.o[s.order[s.picked]]:"（無回答）";
+      const it=document.createElement("div"); it.className="ritem";
+      it.innerHTML=`<p class="rq"><span class="n">Q</span>${s.q.q}</p>
+        <p class="ra you"><span class="lab">あなた</span>${yourText}</p>
+        <p class="ra ok"><span class="lab">正解</span>${s.q.o[0]}</p>
+        <p class="rx">${s.q.e}</p>`;
+      rv.appendChild(it);
+    });
+  }
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+$("startBtn").addEventListener("click",()=>startSession(pool()));
+$("retryBtn").addEventListener("click",()=>startSession(pool()));
+$("wrongBtn").addEventListener("click",()=>{
+  const w=session.filter(s=>s.picked!==s.correctIdx).map(s=>s.q);
+  startSession(w.length?w:pool());
+});
+$("homeBtn").addEventListener("click",()=>{
+  $("result").classList.add("hidden"); $("quiz").classList.add("hidden"); $("home").classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+buildChips();
+</script>
+</body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心理学研究法 問題集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F4EE;
+    --paper-2:#FBFAF6;
+    --ink:#16243F;
+    --ink-soft:#3a4860;
+    --muted:#6E6E66;
+    --line:#DCDAD0;
+    --blue:#2E5AA8;
+    --green:#2C7A5E;
+    --green-bg:#E5F0EB;
+    --red:#BF3B2B;
+    --red-bg:#F6E6E2;
+    --shadow:0 1px 0 rgba(22,36,63,.04), 0 8px 28px -16px rgba(22,36,63,.28);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Noto Sans JP",sans-serif;
+    color:var(--ink);
+    background-color:var(--paper);
+    background-image:
+      linear-gradient(rgba(46,90,168,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(46,90,168,.045) 1px, transparent 1px);
+    background-size:26px 26px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:24px 18px 64px}
+  .mono{font-family:"Space Mono",monospace}
+  .disp{font-family:"Zen Kaku Gothic New",sans-serif}
+
+  /* masthead */
+  .mast{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:26px}
+  .mast .eyebrow{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--blue);margin:0 0 6px}
+  .mast h1{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;
+    font-size:clamp(26px,7vw,38px);line-height:1.12;margin:0;letter-spacing:.01em}
+  .mast .sub{color:var(--muted);font-size:13px;margin-top:8px}
+
+  .card{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;
+    padding:22px;box-shadow:var(--shadow)}
+
+  /* home */
+  .lead{font-size:15px;color:var(--ink-soft);margin:0 0 22px}
+  .seclabel{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted);margin:0 0 12px;display:flex;
+    align-items:center;gap:10px}
+  .seclabel::after{content:"";flex:1;height:1px;background:var(--line)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .chip{font-family:"Noto Sans JP",sans-serif;font-size:13px;font-weight:500;
+    border:1px solid var(--line);background:var(--paper-2);color:var(--ink-soft);
+    border-radius:999px;padding:7px 13px;cursor:pointer;transition:all .15s;
+    display:inline-flex;align-items:center;gap:7px}
+  .chip .ct{font-family:"Space Mono",monospace;font-size:11px;color:var(--muted)}
+  .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .chip[aria-pressed="true"] .ct{color:rgba(255,255,255,.7)}
+  .chip:hover{border-color:var(--ink)}
+
+  .opts-row{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin:6px 0 24px}
+  .toggle{display:inline-flex;align-items:center;gap:9px;font-size:13px;
+    color:var(--ink-soft);cursor:pointer;user-select:none}
+  .toggle input{position:absolute;opacity:0;width:0;height:0}
+  .switch{width:40px;height:22px;border-radius:999px;background:var(--line);
+    position:relative;transition:background .18s;flex:none}
+  .switch::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;
+    border-radius:50%;background:#fff;transition:transform .18s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+  .toggle input:checked + .switch{background:var(--green)}
+  .toggle input:checked + .switch::after{transform:translateX(18px)}
+  .toggle input:focus-visible + .switch{outline:2px solid var(--blue);outline-offset:2px}
+
+  .btn{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:16px;
+    border:none;border-radius:11px;padding:15px 22px;cursor:pointer;transition:transform .1s, filter .15s;
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%}
+  .btn-primary{background:var(--ink);color:#fff}
+  .btn-primary:hover{filter:brightness(1.12)}
+  .btn-primary:active{transform:translateY(1px)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink)}
+  .btn[disabled]{opacity:.4;cursor:not-allowed}
+  .btn .ar{font-family:"Space Mono",monospace}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap}
+  .btnrow .btn{width:auto;flex:1;min-width:140px}
+
+  /* quiz */
+  .topbar{display:flex;align-items:center;justify-content:space-between;
+    font-family:"Space Mono",monospace;font-size:12px;color:var(--muted);margin-bottom:10px}
+  .topbar b{color:var(--ink)}
+  .meter{height:5px;background:var(--line);border-radius:999px;overflow:hidden;margin-bottom:24px}
+  .meter > i{display:block;height:100%;background:var(--blue);border-radius:999px;
+    transition:width .35s ease}
+  .qtag{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+  .qtag .fmt{color:var(--muted)}
+  .qtext{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:19px;
+    line-height:1.55;margin:0 0 20px}
+  .choices{display:flex;flex-direction:column;gap:10px}
+  .choice{display:flex;gap:13px;align-items:flex-start;text-align:left;width:100%;
+    background:var(--paper-2);border:1px solid var(--line);border-radius:11px;
+    padding:14px 15px;cursor:pointer;font-size:15px;color:var(--ink);
+    font-family:"Noto Sans JP",sans-serif;transition:border-color .12s, background .12s;line-height:1.5}
+  .choice:hover:not(:disabled){border-color:var(--ink)}
+  .choice:disabled{cursor:default}
+  .choice .key{font-family:"Space Mono",monospace;font-weight:700;font-size:13px;
+    color:var(--blue);flex:none;width:18px;text-align:center;margin-top:1px}
+  .choice.correct{background:var(--green-bg);border-color:var(--green)}
+  .choice.correct .key{color:var(--green)}
+  .choice.wrong{background:var(--red-bg);border-color:var(--red)}
+  .choice.wrong .key{color:var(--red)}
+  .choice .mark{margin-left:auto;font-weight:700;font-family:"Space Mono",monospace;flex:none}
+  .choice.correct .mark{color:var(--green)}
+  .choice.wrong .mark{color:var(--red)}
+  .choice:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+  .explain{margin-top:18px;border-left:3px solid var(--blue);background:rgba(46,90,168,.05);
+    border-radius:0 10px 10px 0;padding:13px 16px;font-size:14px;color:var(--ink-soft);
+    opacity:0;transform:translateY(4px);transition:opacity .25s, transform .25s}
+  .explain.show{opacity:1;transform:none}
+  .explain .h{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--blue);margin-bottom:5px;display:block}
+  .explain.bad{border-left-color:var(--red);background:var(--red-bg)}
+  .explain.bad .h{color:var(--red)}
+  .quiz-foot{margin-top:24px}
+
+  /* result */
+  .ring-wrap{display:flex;flex-direction:column;align-items:center;text-align:center;
+    padding:6px 0 8px}
+  .ring{position:relative;width:180px;height:180px}
+  .ring svg{transform:rotate(-90deg)}
+  .ring .read{position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center}
+  .ring .pct{font-family:"Space Mono",monospace;font-weight:700;font-size:42px;color:var(--ink);line-height:1}
+  .ring .pct span{font-size:18px}
+  .ring .frac{font-family:"Space Mono",monospace;font-size:12px;color:var(--muted);margin-top:6px}
+  .verdict{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:18px;margin:16px 0 4px}
+  .verdict + p{color:var(--muted);font-size:13px;margin:0}
+
+  .breakdown{margin-top:8px}
+  .brow{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;
+    padding:11px 0;border-bottom:1px solid var(--line)}
+  .brow:last-child{border-bottom:none}
+  .brow .name{font-size:14px;font-weight:500}
+  .brow .score{font-family:"Space Mono",monospace;font-size:13px;color:var(--ink-soft)}
+  .bbar{grid-column:1 / -1;height:6px;background:var(--line);border-radius:999px;overflow:hidden}
+  .bbar > i{display:block;height:100%;border-radius:999px;background:var(--green)}
+  .bbar > i.low{background:var(--red)}
+  .bbar > i.mid{background:var(--blue)}
+
+  .review .ritem{border:1px solid var(--line);border-radius:11px;padding:15px;margin-bottom:12px;background:var(--paper-2)}
+  .review .rq{font-weight:500;font-size:14px;margin:0 0 9px;line-height:1.55}
+  .review .rq .n{font-family:"Space Mono",monospace;color:var(--red);margin-right:7px}
+  .review .ra{font-size:13px;margin:3px 0}
+  .review .ra .lab{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted);margin-right:6px}
+  .review .ra.you{color:var(--red)}
+  .review .ra.ok{color:var(--green)}
+  .review .rx{font-size:13px;color:var(--ink-soft);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+
+  .gap{height:26px}
+  .hidden{display:none !important}
+  .center-note{text-align:center;color:var(--muted);font-size:13px;margin-top:16px}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;animation:none !important}
+  }
+  @media (max-width:480px){
+    .wrap{padding:18px 14px 56px}
+    .card{padding:18px}
+    .qtext{font-size:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <p class="eyebrow">Research Methods · Drill</p>
+    <h1>心理学研究法<br>問題集</h1>
+    <p class="sub">ノートの内容＋派生論点ぜんぶで全55問。解いたその場で答え合わせと解説が出ます。</p>
+  </header>
+
+  <!-- ============ HOME ============ -->
+  <section id="home" class="card">
+    <p class="lead">出題する範囲を選んで、スタート。何も触らなければ全範囲から出ます。最後に正答率とカテゴリ別の出来、間違えた問題の復習が見られます。</p>
+
+    <p class="seclabel">出題範囲</p>
+    <div class="chips" id="chips"></div>
+
+    <p class="seclabel">設定</p>
+    <div class="opts-row">
+      <label class="toggle"><input type="checkbox" id="shuffleToggle" checked><span class="switch"></span>問題をシャッフル</label>
+      <label class="toggle"><input type="checkbox" id="shuffleChoices" checked><span class="switch"></span>選択肢もシャッフル</label>
+    </div>
+
+    <button class="btn btn-primary" id="startBtn">スタート <span class="ar" id="startCount">→ 55問</span></button>
+    <p class="center-note">スマホでも片手で解けます。1問ずつ即フィードバック。</p>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section id="quiz" class="hidden">
+    <div class="topbar">
+      <span><b id="qNow">1</b> / <span id="qTotal">55</span></span>
+      <span id="qRight">正解 0</span>
+    </div>
+    <div class="meter"><i id="meterFill" style="width:0%"></i></div>
+
+    <div class="card">
+      <div class="qtag"><span id="qCat">カテゴリ</span> · <span class="fmt" id="qFmt">4択</span></div>
+      <h2 class="qtext" id="qText">…</h2>
+      <div class="choices" id="qChoices"></div>
+      <div class="explain" id="qExplain"><span class="h" id="qExplainH">解説</span><span id="qExplainBody"></span></div>
+    </div>
+
+    <div class="quiz-foot">
+      <button class="btn btn-primary hidden" id="nextBtn">次の問題 <span class="ar">→</span></button>
+    </div>
+  </section>
+
+  <!-- ============ RESULT ============ -->
+  <section id="result" class="hidden">
+    <div class="card">
+      <div class="ring-wrap">
+        <div class="ring">
+          <svg width="180" height="180" viewBox="0 0 180 180">
+            <circle cx="90" cy="90" r="78" fill="none" stroke="var(--line)" stroke-width="14"></circle>
+            <circle id="ringFg" cx="90" cy="90" r="78" fill="none" stroke="var(--green)" stroke-width="14"
+              stroke-linecap="round" stroke-dasharray="490" stroke-dashoffset="490"></circle>
+          </svg>
+          <div class="read">
+            <div class="pct" id="resPct">0<span>%</span></div>
+            <div class="frac" id="resFrac">0 / 55</div>
+          </div>
+        </div>
+        <div class="verdict" id="resVerdict">おつかれさま</div>
+        <p id="resBlurb"></p>
+      </div>
+    </div>
+
+    <div class="gap"></div>
+    <p class="seclabel">カテゴリ別の出来</p>
+    <div class="card breakdown" id="breakdown"></div>
+
+    <div class="gap"></div>
+    <div id="reviewWrap">
+      <p class="seclabel">間違えた問題の復習</p>
+      <div class="review" id="review"></div>
+    </div>
+
+    <div class="gap"></div>
+    <div class="btnrow">
+      <button class="btn btn-primary" id="retryBtn">もう一度（同じ範囲）</button>
+      <button class="btn btn-ghost" id="wrongBtn">間違いだけ復習</button>
+    </div>
+    <div style="height:10px"></div>
+    <button class="btn btn-ghost" id="homeBtn">範囲を選び直す</button>
+  </section>
+
+</div>
+
+<script>
+const CAT = {
+  sci:"実証科学・総論", def:"概念的・操作的定義", vr:"妥当性・信頼性",
+  cor:"相関と因果", var:"変数", exp:"実験法", sur:"調査法",
+  obs:"観察法", int:"面接法", test:"検査法", ivn:"介入研究法"
+};
+const CAT_ORDER = ["sci","def","vr","cor","var","exp","sur","obs","int","test","ivn"];
+
+// type: "mc" 4択 / "tf" ◯×。answer は choices の正解 index
+const QUESTIONS = [
+ {c:"sci",t:"mc",q:"心理学研究法が「実証に基づく科学」であるとされる最大の理由は？",o:["経験的事実に基づくデータを集めて現象を記述するから","研究者の直感をいちばん重視するから","権威ある学説を無批判に受け入れるから","思弁だけで結論を導くから"],a:0,e:"思いつきや権威ではなく、経験的に集めたデータの積み重ねで現象を記述し、それが真実だと示していくのが実証科学。"},
+ {c:"sci",t:"tf",q:"「現象が存在すると決まって生じることがら」を法則と呼ぶ。",o:["正しい","誤り"],a:0,e:"規則的に決まって生じる関係＝法則。仮説はそれを説明するために立てる予想。"},
+ {c:"sci",t:"mc",q:"心理学研究の一般的な流れとして正しいのは？",o:["仮説を立てる → データ収集 → 現象の記述","結論 → 仮説 → データ","データだけ集めて仮説は立てない","直感で決めてすぐ公表"],a:0,e:"仮説を立て、適切な対象から経験的データを集め、その積み重ねから現象を正確に記述する。"},
+ {c:"sci",t:"tf",q:"心は直接目に見えないので、心理学は経験的データを使わずに研究する。",o:["正しい","誤り"],a:1,e:"逆。見えないからこそ、行動など観察できる手がかり（経験的データ）に基づいて間接的に研究する。"},
+
+ {c:"def",t:"mc",q:"「不安とは、漠然とした脅威に対する不快な情動である」という説明は何か？",o:["概念的定義","操作的定義","仮説","法則"],a:0,e:"ことば・文章で概念の意味を説明するのが概念的定義。"},
+ {c:"def",t:"mc",q:"「不安を、心拍数と発汗量の測定値で表す」のはどの定義？",o:["操作的定義","概念的定義","相関的定義","標準化"],a:0,e:"概念を観察・測定する具体的な手続きによって定義するのが操作的定義。"},
+ {c:"def",t:"tf",q:"操作的定義を与えると、概念を測定・観察できるようになり、再現性が高まる。",o:["正しい","誤り"],a:0,e:"測る手続きが明示されるので、他の研究者も同じように測れる。"},
+ {c:"def",t:"mc",q:"操作的定義に必ず伴う注意点は？",o:["定義の仕方しだいで測れる側面が変わり、妥当性が問われる","概念のすべてを完全に捉えられる","データが不要になる","信頼性とは無関係になる"],a:0,e:"どんな手続きで測るかで「本当にそれを測れているか（妥当性）」が変わってくる。"},
+
+ {c:"vr",t:"mc",q:"「測定したいものを確かに測れている程度」を指すのは？",o:["妥当性","信頼性","相関","標準化"],a:0,e:"validity。狙った概念そのものを測れているか。"},
+ {c:"vr",t:"mc",q:"「ばらつきなく安定して測れている程度（精度）」を指すのは？",o:["信頼性","妥当性","因果","操作"],a:0,e:"reliability。同じ条件なら同じ結果が出る安定性。"},
+ {c:"vr",t:"tf",q:"信頼性が高くても、妥当性が低いということはありうる。",o:["正しい","誤り"],a:0,e:"毎回ぴったり同じ値が出ても（信頼性◯）、測りたいものとズレていれば妥当性は低い。"},
+ {c:"vr",t:"mc",q:"体重計で身長を測ろうとした。毎回同じ値は出る。この状態は？",o:["信頼性は高いが妥当性が低い","妥当性は高いが信頼性が低い","どちらも高い","どちらも評価できない"],a:0,e:"安定はしている（信頼性◯）が、測りたいもの＝身長を測れていない（妥当性×）。"},
+ {c:"vr",t:"mc",q:"同じ人を測るたびに結果が大きくバラついた。低いのは？",o:["信頼性","妥当性","相関","統制"],a:0,e:"精度・安定性が低い＝信頼性の問題。"},
+
+ {c:"cor",t:"mc",q:"「2つの変数に何らかの規則的な関係がある」ことを指すのは？",o:["相関","因果","交絡","操作"],a:0,e:"一方が変われば他方も規則的に変わる関係。原因→結果の向きまでは言えない。"},
+ {c:"cor",t:"mc",q:"「変数Xが原因となって変数Yの変動が引き起こされた」関係は？",o:["因果関係","相関関係","疑似相関","標準化"],a:0,e:"原因と結果の関係。相関より強い主張になる。"},
+ {c:"cor",t:"tf",q:"相関関係があれば、必ず因果関係があるといえる。",o:["正しい","誤り"],a:1,e:"相関は因果を保証しない。向きが逆だったり、第3の変数が両方を動かしている場合がある。"},
+ {c:"cor",t:"mc",q:"アイスの売上と水難事故が同時期に増えたが、実際は気温が両方の原因だった。これは？",o:["疑似相関（第3の変数による見かけの相関）","直接の因果関係","信頼性の問題","操作的定義"],a:0,e:"第3変数（気温）が両方を動かしているだけ。見かけ上の相関＝疑似相関。"},
+
+ {c:"var",t:"mc",q:"原因と考えられ、研究者が変化させる変数は？",o:["独立変数","従属変数","剰余変数","交絡変数"],a:0,e:"independent variable。操作する側＝原因側。"},
+ {c:"var",t:"mc",q:"結果にあたる変数は？",o:["従属変数","独立変数","剰余変数","統制変数"],a:0,e:"dependent variable。独立変数の影響を受けて変動する側。"},
+ {c:"var",t:"mc",q:"独立変数を変化させることを何という？",o:["操作","観察","統制","標準化"],a:0,e:"manipulation。実験法の核心。"},
+ {c:"var",t:"mc",q:"操作していない、または操作できない変数は？",o:["剰余変数","独立変数","従属変数","媒介変数"],a:0,e:"関心の対象外だが、結果に影響しうる変数。"},
+ {c:"var",t:"mc",q:"従属変数の変化が、独立変数のせいか剰余変数のせいか区別できなくなる問題は？",o:["交絡","相関","標準化","操作"],a:0,e:"confounding。原因の切り分けができなくなる状態。"},
+ {c:"var",t:"mc",q:"交絡に対する手立てを検討することを何という？",o:["統制","操作","観察","定義"],a:0,e:"control。剰余変数の影響を抑えて交絡を防ぐ。"},
+ {c:"var",t:"tf",q:"剰余変数を統制すると、交絡の問題を減らすことができる。",o:["正しい","誤り"],a:0,e:"剰余変数の影響をそろえる・取り除くことで、原因を切り分けやすくなる。"},
+
+ {c:"exp",t:"mc",q:"実験法で対象を2群に分けるとき、望ましい割り当て方は？",o:["ランダム（無作為）割り当て","成績順","希望制","出席番号順"],a:0,e:"無作為割り当てで群間の剰余変数をならし、交絡を防ぐ。"},
+ {c:"exp",t:"mc",q:"操作（処置／treatment）を加えるグループは？",o:["実験群","統制群","対照群","標本群"],a:0,e:"処置を受ける群＝実験群。"},
+ {c:"exp",t:"mc",q:"操作を加えないグループは？",o:["統制群（対照群）","実験群","介入群","観察群"],a:0,e:"比較の基準になる群。control group。"},
+ {c:"exp",t:"tf",q:"無作為割り当ては、群間の剰余変数を均質化し、交絡を防ぐのに役立つ。",o:["正しい","誤り"],a:0,e:"ランダム化の最大の意義がこれ。"},
+ {c:"exp",t:"mc",q:"実験法が他の方法より優れている最大の点は？",o:["因果関係を検討できる","必ず自然な場面で行える","時間コストがかからない","倫理的問題が一切ない"],a:0,e:"操作＋統制＋無作為割り当てによって、原因→結果の関係を検討できる。"},
+ {c:"exp",t:"mc",q:"manipulation（操作）にあたるのは？",o:["実験者が条件を設定して状況を作ること","対象をただ眺めること","質問紙を配ること","結果を記録すること"],a:0,e:"独立変数を意図的に変化させること＝操作。"},
+
+ {c:"sur",t:"mc",q:"調査票や質問紙を用い、言葉で問いかける方法は？",o:["調査法","実験法","観察法","検査法"],a:0,e:"言語的な問いかけでデータを得る方法。"},
+ {c:"sur",t:"mc",q:"調査法が特に向いているのは？",o:["多数のデータから一般的な特徴（傾向）を推定すること","1人を深く治療すること","因果を厳密に証明すること","動物の自然行動を見ること"],a:0,e:"回答負担が比較的小さく、多数集めて全体の傾向をつかむのに向く。"},
+ {c:"sur",t:"tf",q:"調査法は回答者の負担が比較的少なく、多数のデータを集めやすい。",o:["正しい","誤り"],a:0,e:"回答に損失が少ないので、大規模に集めやすい。"},
+ {c:"sur",t:"mc",q:"「この場面ならどう行動すると思いますか」と仮想場面を尋ねることがあるのはなぜ？",o:["実際に行わせると倫理的に問題がある場合があるから","回答が必ず正確になるから","観察法より時間がかかるから","因果が証明できるから"],a:0,e:"実際にやらせられない（倫理的にNGな）状況を、想像での回答で補う。"},
+ {c:"sur",t:"mc",q:"調査法の弱点として適切なのは？",o:["自己報告に依存し、実際の行動とズレることがある","必ず因果が分かってしまう","データが少なくなる","数値化が一切できない"],a:0,e:"「そう思う」と実際の行動は一致するとは限らない（社会的望ましさなど）。"},
+
+ {c:"obs",t:"mc",q:"より自然な状況下で対象を見て、操作を加えずに心の動きを捉える方法は？",o:["観察法","実験法","検査法","介入研究法"],a:0,e:"操作しないのが特徴。自然な場面をそのまま見る。"},
+ {c:"obs",t:"mc",q:"観察法で手がかりになるのは？",o:["行動など「見えるもの」（動作・発言・表情・服装）","見えない内面そのもの","標準化得点","無作為割り当て"],a:0,e:"見えるものしか手がかりがない。そこから心の動きを推測する。"},
+ {c:"obs",t:"mc",q:"観察者が対象の活動に加わりながら観察する方法は？",o:["参与観察法","非参与観察法","逐語記録法","行動目録法"],a:0,e:"集団の中に入って観察する。"},
+ {c:"obs",t:"mc",q:"観察者が活動に加わらず、外から観察する方法は？",o:["非参与観察法","参与観察法","面接法","検査法"],a:0,e:"距離を取って観察。観察者の影響を抑えやすい。"},
+ {c:"obs",t:"mc",q:"その場で生じる行動を、経時的にすべて記録していく方法は？",o:["逐語記録法","行動目録法","標準化","AB法"],a:0,e:"起きたことを時間に沿って丸ごと記録する。"},
+ {c:"obs",t:"mc",q:"あらかじめ行動をリストアップし、頻度や持続時間を測る方法は？",o:["行動目録法","逐語記録法","参与観察法","半構造化面接"],a:0,e:"チェックリスト的に、どの行動が何回・何分かを記録する。"},
+ {c:"obs",t:"tf",q:"観察法は実際の場面を扱うため、生態学的妥当性が比較的高い。",o:["正しい","誤り"],a:0,e:"現実場面に近いぶん結果を現実に当てはめやすい。ただし時間コストは高い。"},
+
+ {c:"int",t:"mc",q:"面接法の主な目的は？",o:["感情・価値観・動機など内面的なことの理解","多数の傾向の推定","行動の頻度測定","因果の厳密な証明"],a:0,e:"言葉のやり取りを通して内面に迫る。"},
+ {c:"int",t:"mc",q:"質問の項目や順序をあらかじめ固定しない面接は？",o:["非構造化面接","構造化面接","半構造化面接","逐語面接"],a:0,e:"流れに応じて自由に聞く。臨床場面で多い。"},
+ {c:"int",t:"tf",q:"治療を目的とする臨床的面接では、非構造化面接が多く用いられる。",o:["正しい","誤り"],a:0,e:"相手に合わせて柔軟にやり取りする必要があるため。"},
+ {c:"int",t:"mc",q:"資料収集を主な目的とする面接は？",o:["調査的面接","臨床的面接","検査的面接","行動目録面接"],a:0,e:"情報を集めることを目的とした面接。"},
+
+ {c:"test",t:"mc",q:"標準化された材料と手続きで、知能・性格などの心理的属性を測る方法は？",o:["検査法","観察法","調査法","介入研究法"],a:0,e:"標準化が前提。個人の心理的属性を測定する。"},
+ {c:"test",t:"mc",q:"標準化の要件として「適切でない」ものはどれ？",o:["検査者が状況に応じて手続きを自由に変えられること","十分な数の偏りないデータに裏打ちされている","実施が容易で結果を求めやすい","判断基準が明確である"],a:0,e:"標準化は誰がやっても同じ手続き・基準になること。手続きを自由に変えてよいのは標準化に反する。"},
+ {c:"test",t:"mc",q:"課題を与えて成功・失敗をみる心理検査のタイプは？",o:["課題遂行タイプ","自己報告タイプ","観察タイプ","面接タイプ"],a:0,e:"刺激（課題）を出して、できるかどうかの反応をみる。"},
+ {c:"test",t:"mc",q:"感情・信念・心理状態を本人に尋ねるタイプの心理検査は？",o:["自己報告タイプ","課題遂行タイプ","参与観察タイプ","構造化タイプ"],a:0,e:"本人の報告を通して心理的属性を捉える。"},
+ {c:"test",t:"tf",q:"標準化された検査では、得点分布・妥当性・信頼性などの統計情報が公開されていることが要件となる。",o:["正しい","誤り"],a:0,e:"情報が公開され、判断基準が明確であることが標準化の要件。"},
+
+ {c:"ivn",t:"mc",q:"対象の支援に役立つ実践として、心理社会的介入の有効性を検証する方法は？",o:["介入研究法","観察法","調査法","検査法"],a:0,e:"支援に寄与することを重視し、介入の効果を確かめる。"},
+ {c:"ivn",t:"mc",q:"1事例を対象に、介入の前後で変化を検討するデザインは？",o:["一事例研究法（シングルケースデザイン）","大規模調査","無作為化比較実験","非参与観察"],a:0,e:"ひとつの事例を丁寧に追う。AB法などがある。"},
+ {c:"ivn",t:"mc",q:"ベースライン期と介入期を比較する、基本的なシングルケースデザインは？",o:["AB法","因子分析","標準化","逐語記録法"],a:0,e:"A＝ベースライン期、B＝介入期。前後の変化で効果を検討する。"},
+ {c:"ivn",t:"tf",q:"「どんな発言でもほめる期間」と「積極的な発言だけほめる期間」を比べて変化をみるのは、一事例研究法の例といえる。",o:["正しい","誤り"],a:0,e:"ベースライン期と介入期を比較するシングルケースデザインの一例。"}
+];
+
+// ---------- state ----------
+let selectedCats = new Set();   // 空＝全範囲
+let session = [];               // [{q, choiceOrder, answered, picked, correctIdx}]
+let idx = 0, correctCount = 0;
+
+const $ = id => document.getElementById(id);
+const shuffle = arr => { const a=arr.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+
+// ---------- home ----------
+function buildChips(){
+  const counts = {};
+  QUESTIONS.forEach(q => counts[q.c]=(counts[q.c]||0)+1);
+  const wrap = $("chips");
+  wrap.innerHTML = "";
+  CAT_ORDER.forEach(k=>{
+    const b=document.createElement("button");
+    b.className="chip"; b.type="button"; b.setAttribute("aria-pressed","false");
+    b.dataset.cat=k;
+    b.innerHTML=`${CAT[k]} <span class="ct">${counts[k]||0}</span>`;
+    b.addEventListener("click",()=>{
+      if(selectedCats.has(k)){selectedCats.delete(k);b.setAttribute("aria-pressed","false");}
+      else{selectedCats.add(k);b.setAttribute("aria-pressed","true");}
+      updateStartCount();
+    });
+    wrap.appendChild(b);
+  });
+  updateStartCount();
+}
+function pool(){
+  return selectedCats.size? QUESTIONS.filter(q=>selectedCats.has(q.c)) : QUESTIONS.slice();
+}
+function updateStartCount(){
+  const n=pool().length;
+  $("startCount").textContent = `→ ${n}問`;
+  $("startBtn").disabled = n===0;
+}
+
+// ---------- quiz flow ----------
+function startSession(list){
+  let qs = list.slice();
+  if($("shuffleToggle").checked) qs = shuffle(qs);
+  const shuf = $("shuffleChoices").checked;
+  session = qs.map(q=>{
+    let order = q.o.map((_,i)=>i);
+    if(shuf) order = shuffle(order);
+    return {q, order, picked:null, correctIdx:order.indexOf(q.a)};
+  });
+  idx=0; correctCount=0;
+  $("home").classList.add("hidden");
+  $("result").classList.add("hidden");
+  $("quiz").classList.remove("hidden");
+  $("qTotal").textContent = session.length;
+  renderQ();
+  window.scrollTo({top:0,behavior:"instant" in window?"instant":"auto"});
+}
+
+function renderQ(){
+  const s = session[idx];
+  $("qNow").textContent = idx+1;
+  $("qRight").textContent = `正解 ${correctCount}`;
+  $("meterFill").style.width = `${(idx/session.length)*100}%`;
+  $("qCat").textContent = CAT[s.q.c];
+  $("qFmt").textContent = s.q.t==="tf"?"◯×":"4択";
+  $("qText").textContent = s.q.q;
+
+  const box=$("qChoices"); box.innerHTML="";
+  const keys = s.q.t==="tf" ? ["○","×"] : ["A","B","C","D"];
+  s.order.forEach((origIdx,pos)=>{
+    const btn=document.createElement("button");
+    btn.className="choice"; btn.type="button";
+    btn.innerHTML=`<span class="key">${keys[pos]||""}</span><span>${s.q.o[origIdx]}</span>`;
+    btn.addEventListener("click",()=>answer(pos,btn));
+    box.appendChild(btn);
+  });
+
+  const ex=$("qExplain"); ex.classList.remove("show","bad");
+  $("nextBtn").classList.add("hidden");
+}
+
+function answer(pos,btn){
+  const s=session[idx];
+  if(s.picked!==null) return;
+  s.picked=pos;
+  const buttons=[...$("qChoices").children];
+  const right = pos===s.correctIdx;
+  if(right) correctCount++;
+  buttons.forEach((b,i)=>{
+    b.disabled=true;
+    if(i===s.correctIdx){b.classList.add("correct");b.insertAdjacentHTML("beforeend",'<span class="mark">正解</span>');}
+    else if(i===pos){b.classList.add("wrong");b.insertAdjacentHTML("beforeend",'<span class="mark">×</span>');}
+  });
+  const ex=$("qExplain");
+  $("qExplainH").textContent = right? "正解 — 解説" : "おしい — 解説";
+  $("qExplainBody").textContent = " "+s.q.e;
+  ex.classList.toggle("bad",!right);
+  ex.classList.add("show");
+  $("qRight").textContent = `正解 ${correctCount}`;
+  const nb=$("nextBtn");
+  nb.classList.remove("hidden");
+  nb.querySelector(".ar").textContent = (idx===session.length-1)? "" : "→";
+  nb.childNodes[0].nodeValue = (idx===session.length-1)? "結果を見る " : "次の問題 ";
+  nb.focus();
+}
+
+$("nextBtn").addEventListener("click",()=>{
+  if(idx===session.length-1){ showResult(); }
+  else { idx++; renderQ(); window.scrollTo({top:0,behavior:"smooth"}); }
+});
+
+// ---------- result ----------
+function showResult(){
+  $("quiz").classList.add("hidden");
+  $("result").classList.remove("hidden");
+  const total=session.length;
+  const pct=Math.round((correctCount/total)*100);
+  $("resPct").innerHTML = `${pct}<span>%</span>`;
+  $("resFrac").textContent = `${correctCount} / ${total}`;
+
+  // ring
+  const C=2*Math.PI*78;
+  const fg=$("ringFg");
+  fg.style.strokeDasharray=C;
+  fg.style.strokeDashoffset=C;
+  fg.setAttribute("stroke", pct>=80?"var(--green)":pct>=50?"var(--blue)":"var(--red)");
+  requestAnimationFrame(()=>{ fg.style.transition="stroke-dashoffset .9s ease"; fg.style.strokeDashoffset=C*(1-pct/100); });
+
+  let v,b;
+  if(pct>=90){v="ほぼ完璧";b="この調子。間違えたところだけ最終チェックすれば盤石です。";}
+  else if(pct>=70){v="いい線いってる";b="基礎は固まっています。取りこぼした論点を復習で詰めましょう。";}
+  else if(pct>=50){v="あと一歩";b="半分は取れています。下のカテゴリ別の弱点をねらって復習を。";}
+  else {v="ここからが伸びどき";b="まずは間違えた問題の解説をひと通り。用語の定義から固め直すと一気に伸びます。";}
+  $("resVerdict").textContent=v; $("resBlurb").textContent=b;
+
+  // breakdown
+  const stat={};
+  session.forEach(s=>{
+    const k=s.q.c; stat[k]=stat[k]||{n:0,ok:0};
+    stat[k].n++; if(s.picked===s.correctIdx) stat[k].ok++;
+  });
+  const bd=$("breakdown"); bd.innerHTML="";
+  CAT_ORDER.filter(k=>stat[k]).forEach(k=>{
+    const {n,ok}=stat[k]; const p=Math.round((ok/n)*100);
+    const cls = p>=80?"":p>=50?"mid":"low";
+    const row=document.createElement("div"); row.className="brow";
+    row.innerHTML=`<span class="name">${CAT[k]}</span><span class="score">${ok}/${n} · ${p}%</span>
+      <span class="bbar"><i class="${cls}" style="width:${p}%"></i></span>`;
+    bd.appendChild(row);
+  });
+
+  // review wrong
+  const wrong=session.filter(s=>s.picked!==s.correctIdx);
+  const rWrap=$("reviewWrap"), rv=$("review");
+  if(wrong.length===0){
+    rWrap.innerHTML='<p class="seclabel">復習</p><div class="card" style="text-align:center;color:var(--green);font-weight:700">全問正解！復習はなしです 🎯</div>';
+  }else{
+    rv.innerHTML="";
+    wrong.forEach((s,i)=>{
+      const yourText = s.picked!==null ? s.q.o[s.order[s.picked]] : "（無回答）";
+      const okText = s.q.o[s.q.a];
+      const it=document.createElement("div"); it.className="ritem";
+      it.innerHTML=`<p class="rq"><span class="n">Q</span>${s.q.q}</p>
+        <p class="ra you"><span class="lab">あなた</span>${yourText}</p>
+        <p class="ra ok"><span class="lab">正解</span>${okText}</p>
+        <p class="rx">${s.q.e}</p>`;
+      rv.appendChild(it);
+    });
+  }
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+// ---------- buttons ----------
+$("startBtn").addEventListener("click",()=>startSession(pool()));
+$("retryBtn").addEventListener("click",()=>startSession(pool()));
+$("wrongBtn").addEventListener("click",()=>{
+  const wrongQs = session.filter(s=>s.picked!==s.correctIdx).map(s=>s.q);
+  if(wrongQs.length===0){ startSession(pool()); }
+  else { startSession(wrongQs); }
+});
+$("homeBtn").addEventListener("click",()=>{
+  $("result").classList.add("hidden");
+  $("quiz").classList.add("hidden");
+  $("home").classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+
+buildChips();
+</script>
+</body>
+</html>
