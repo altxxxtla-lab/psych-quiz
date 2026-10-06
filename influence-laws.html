@@ -1,0 +1,1180 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="初対面・関係の中・集団・自分の判断の4場面で引ける心理法則の索引。147項目、エビデンスの確からしさ付き。分類の組み替えと自分の法則の追加ができます。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="人を動かす心理法則">
+<meta property="og:description" content="初対面・関係の中・集団・自分の判断の4場面で引ける心理法則の索引。147項目、エビデンスの確からしさ付き。分類の組み替えと自分の法則の追加ができます。">
+<meta name="twitter:card" content="summary">
+<title>人を動かす心理法則</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@600&display=swap">
+<style>
+  :root {
+    --ground: #EBEDE8;
+    --surface: #F9FAF7;
+    --surface-2: #E2E5DD;
+    --ink: #191D18;
+    --ink-mid: #444B42;
+    --ink-soft: #6A7267;
+    --line: #D1D6CB;
+    --line-soft: #DFE3DA;
+    --accent: #2F5D50;
+    --accent-ink: #21453B;
+    --accent-soft: #D8E5DE;
+    --warn: #7E5417;
+    --warn-soft: #EFE3CC;
+    --alert: #8C3A30;
+    --alert-soft: #F0DBD6;
+    --focus: #2F5D50;
+
+    --serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #141712;
+      --surface: #1B1F19;
+      --surface-2: #242820;
+      --ink: #E8EBE3;
+      --ink-mid: #BAC2B5;
+      --ink-soft: #949C8F;
+      --line: #333930;
+      --line-soft: #2A2F26;
+      --accent: #7FBBA3;
+      --accent-ink: #9ED0BA;
+      --accent-soft: #1E3029;
+      --warn: #D2A45D;
+      --warn-soft: #2E2517;
+      --alert: #DF8B7A;
+      --alert-soft: #33201C;
+      --focus: #7FBBA3;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #141712;
+    --surface: #1B1F19;
+    --surface-2: #242820;
+    --ink: #E8EBE3;
+    --ink-mid: #BAC2B5;
+    --ink-soft: #949C8F;
+    --line: #333930;
+    --line-soft: #2A2F26;
+    --accent: #7FBBA3;
+    --accent-ink: #9ED0BA;
+    --accent-soft: #1E3029;
+    --warn: #D2A45D;
+    --warn-soft: #2E2517;
+    --alert: #DF8B7A;
+    --alert-soft: #33201C;
+    --focus: #7FBBA3;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  .wrap {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 0 72px;
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead {
+    padding-block: 44px 28px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .16em;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(30px, 5.2vw, 46px);
+    line-height: 1.25;
+    letter-spacing: .01em;
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  .lede {
+    max-width: 60ch;
+    margin: 0;
+    color: var(--ink-mid);
+    font-size: 15px;
+  }
+  .lede + .lede { margin-top: 12px; }
+
+  /* ---------- controls ---------- */
+  .controls {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: var(--ground);
+    border-bottom: 1px solid var(--line);
+    padding-block: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    align-items: center;
+  }
+  .search-field {
+    flex: 1 1 260px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 7px 11px;
+  }
+  .search-field:focus-within { border-color: var(--accent); }
+  .search-field svg { flex: none; }
+  #q {
+    flex: 1;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14px;
+    min-width: 0;
+    padding: 0;
+  }
+  #q:focus { outline: none; }
+  #q::placeholder { color: var(--ink-soft); }
+
+  .ev-filters { display: flex; gap: 6px; flex-wrap: wrap; }
+  .ev-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .04em;
+    padding: 5px 10px;
+    border-radius: 2px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ev-btn .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: currentColor;
+  }
+  .ev-btn[aria-pressed="true"][data-ev="a"] { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+  .ev-btn[aria-pressed="true"][data-ev="b"] { color: var(--warn); border-color: var(--warn); background: var(--warn-soft); }
+  .ev-btn[aria-pressed="true"][data-ev="c"] { color: var(--alert); border-color: var(--alert); background: var(--alert-soft); }
+  .ev-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  .count {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  /* ---------- legend / how to read ---------- */
+  .legend {
+    margin-block: 26px 0;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-left: 3px solid var(--accent);
+    max-width: 68ch;
+  }
+  .legend h2 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 10px;
+  }
+  .legend p { margin: 0 0 10px; color: var(--ink-mid); font-size: 14px; }
+  .legend dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 13.5px; }
+  .legend dt { font-family: var(--mono); font-size: 11px; letter-spacing: .04em; white-space: nowrap; padding-top: 4px; }
+  .legend dd { margin: 0; color: var(--ink-mid); }
+  .tag-a { color: var(--accent); }
+  .tag-b { color: var(--warn); }
+  .tag-c { color: var(--alert); }
+
+  /* ---------- layout ---------- */
+  .cols { display: block; }
+  .toc { display: none; }
+
+  @media (min-width: 900px) {
+    .cols {
+      display: grid;
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: 56px;
+      align-items: start;
+    }
+    .toc {
+      display: block;
+      position: sticky;
+      top: calc(env(safe-area-inset-top, 0px) + 72px);
+      padding-top: 40px;
+    }
+  }
+  .toc h2 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0 0 12px;
+  }
+  .toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+  .toc a {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--ink-mid);
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 4px 6px;
+    border-radius: 2px;
+  }
+  .toc a:hover { color: var(--accent); background: var(--accent-soft); }
+  .toc a:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+  .toc a span {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- sections ---------- */
+  .index { padding-top: 40px; }
+  .section { margin-bottom: 56px; scroll-margin-top: 90px; }
+  .section-head { border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 4px; }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 21px;
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .section-head h2 b {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: .08em;
+  }
+  .section-note {
+    margin: 10px 0 0;
+    color: var(--ink-soft);
+    font-size: 13.5px;
+    max-width: 62ch;
+  }
+
+  .entry {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line-soft);
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 0 12px;
+  }
+  .entry:last-child { border-bottom: 0; }
+  .no {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+    padding-top: 5px;
+  }
+  .body { min-width: 0; }
+  .title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 12px;
+    margin-bottom: 6px;
+  }
+  .title-row h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 17px;
+    margin: 0;
+    line-height: 1.5;
+  }
+  .en {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    letter-spacing: .01em;
+  }
+  .ev {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .06em;
+    padding: 2px 7px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .ev-a { color: var(--accent-ink); background: var(--accent-soft); }
+  .ev-b { color: var(--warn); background: var(--warn-soft); }
+  .ev-c { color: var(--alert); background: var(--alert-soft); }
+  .def { margin: 0; max-width: 64ch; }
+  .meta {
+    display: flex;
+    gap: 10px;
+    margin-top: 9px;
+    max-width: 66ch;
+    font-size: 13.5px;
+    line-height: 1.75;
+  }
+  .meta .lbl {
+    flex: none;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .06em;
+    padding-top: 5px;
+    width: 4.5em;
+    color: var(--ink-soft);
+  }
+  .meta.use .lbl { color: var(--accent); }
+  .meta.warn .lbl { color: var(--alert); }
+  .meta p { margin: 0; color: var(--ink-mid); }
+  .meta.warn p { color: var(--ink-mid); }
+
+  mark {
+    background: var(--accent-soft);
+    color: var(--ink);
+    padding: 0 1px;
+    border-radius: 1px;
+  }
+
+  .empty {
+    display: none;
+    padding: 40px 0;
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+  .empty.show { display: block; }
+
+  /* ---------- closing ---------- */
+  .closing {
+    margin-top: 8px;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    max-width: 68ch;
+  }
+  .closing h2 {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 12px;
+  }
+  .closing p { margin: 0 0 12px; color: var(--ink-mid); font-size: 14px; }
+  .closing p:last-child { margin-bottom: 0; }
+
+  .colophon {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .04em;
+    color: var(--ink-soft);
+    line-height: 1.9;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+<style>
+  html { background: var(--ground); -webkit-text-size-adjust: 100%; }
+  :root { color-scheme: light; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { color-scheme: dark; } }
+  :root[data-theme="dark"] { color-scheme: dark; }
+  :root[data-theme="light"] { color-scheme: light; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.85; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<style>
+  /* ---- filter bar ---- */
+  .bar {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: var(--ground);
+    border-bottom: 1px solid var(--line);
+    padding-block: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .bar-row { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+  .fgroup { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .fgroup > .fg-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    color: var(--ink-soft); white-space: nowrap;
+  }
+  .tools { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto; }
+  .tool-btn, .ev-btn, .sc-btn {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .04em;
+    padding: 5px 10px; border-radius: 2px;
+    border: 1px solid var(--line); background: transparent; color: var(--ink-soft);
+    cursor: pointer; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .tool-btn:hover, .ev-btn:hover, .sc-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .tool-btn:focus-visible, .ev-btn:focus-visible, .sc-btn:focus-visible, .link-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .tool-btn.primary { color: var(--accent-ink); border-color: var(--accent); background: var(--accent-soft); }
+  .tool-btn[aria-pressed="true"], .sc-btn[aria-pressed="true"] { color: var(--accent-ink); border-color: var(--accent); background: var(--accent-soft); }
+  .ev-btn .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .ev-btn[aria-pressed="true"][data-ev="a"] { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+  .ev-btn[aria-pressed="true"][data-ev="b"] { color: var(--warn); border-color: var(--warn); background: var(--warn-soft); }
+  .ev-btn[aria-pressed="true"][data-ev="c"] { color: var(--alert); border-color: var(--alert); background: var(--alert-soft); }
+  .ev-btn[aria-pressed="true"][data-ev="x"] { color: var(--ink); border-color: var(--ink-mid); background: var(--surface-2); }
+  .link-btn {
+    border: 0; background: transparent; cursor: pointer;
+    font-family: var(--mono); font-size: 11px; letter-spacing: .04em;
+    color: var(--ink-soft); text-decoration: underline; padding: 4px 2px;
+  }
+  .link-btn:hover { color: var(--accent); }
+  .count { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); font-variant-numeric: tabular-nums; white-space: nowrap; margin: 0; }
+
+  /* ---- scene chips on entries ---- */
+  .scenes { display: inline-flex; gap: 4px; flex-wrap: wrap; }
+  .scene {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .06em;
+    color: var(--ink-soft); border: 1px solid var(--line); border-radius: 2px;
+    padding: 1px 6px; white-space: nowrap;
+  }
+  .ev-x { color: var(--ink-mid); background: var(--surface-2); }
+  .mine { color: var(--accent-ink); background: var(--accent-soft); font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; padding: 2px 7px; border-radius: 2px; }
+
+  /* ---- panel ---- */
+  .panel {
+    margin-top: 26px; padding: 20px;
+    background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--accent);
+    max-width: 760px;
+  }
+  .panel-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .panel-head h2 { font-family: var(--serif); font-size: 18px; font-weight: 600; margin: 0; }
+  .panel-note { margin: 10px 0 18px; font-size: 13px; color: var(--ink-mid); max-width: 62ch; }
+  .panel form { display: flex; flex-direction: column; gap: 12px; }
+  .panel .f2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .panel .f2 { grid-template-columns: 1fr; } }
+  .panel label.field {
+    display: flex; flex-direction: column; gap: 5px;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; color: var(--ink-soft);
+  }
+  .panel input[type="text"], .panel select, .panel textarea {
+    font-family: var(--sans); font-size: 14px; line-height: 1.7;
+    color: var(--ink); background: var(--ground);
+    border: 1px solid var(--line); border-radius: 2px; padding: 7px 9px;
+    width: 100%; resize: vertical;
+  }
+  .panel input[type="text"]:focus, .panel select:focus, .panel textarea:focus { outline: none; border-color: var(--accent); }
+  .scene-picker { display: flex; flex-wrap: wrap; gap: 10px; }
+  .scene-picker label {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-family: var(--sans); font-size: 13px; color: var(--ink-mid); letter-spacing: 0;
+  }
+  .f-actions { flex-direction: row !important; align-items: center; gap: 12px !important; flex-wrap: wrap; }
+  .f-msg { font-family: var(--mono); font-size: 11px; color: var(--accent); }
+  .panel-block { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line-soft); }
+  .panel-block h3 { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: var(--ink-soft); font-weight: 500; margin: 0 0 8px; }
+  .hint { font-size: 12.5px; color: var(--ink-soft); margin: 0 0 12px; max-width: 60ch; }
+  .cat-list { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .cat-list li { display: flex; align-items: center; gap: 8px; }
+  .cat-list input {
+    flex: 1 1 auto; min-width: 0;
+    font-family: var(--sans); font-size: 13.5px; color: var(--ink);
+    background: transparent; border: 1px solid transparent; border-bottom-color: var(--line);
+    border-radius: 0; padding: 4px 2px;
+  }
+  .cat-list input:focus { outline: none; border-bottom-color: var(--accent); }
+  .cat-list .n { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); font-variant-numeric: tabular-nums; flex: none; }
+  .cat-form { flex-direction: row !important; flex-wrap: wrap; gap: 8px !important; }
+  .cat-form input { flex: 1 1 140px; min-width: 0; }
+  .io-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; align-items: center; }
+  .file-btn { position: relative; overflow: hidden; display: inline-flex; align-items: center; }
+  .file-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+  #io-text { font-family: var(--mono); font-size: 11px; line-height: 1.6; }
+
+  /* ---- organize mode ---- */
+  .entry-tools { display: none; margin-top: 12px; gap: 8px; align-items: center; flex-wrap: wrap; }
+  body.organize .entry-tools { display: flex; }
+  .entry-tools select {
+    font-family: var(--sans); font-size: 12.5px; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 2px; padding: 4px 6px;
+    max-width: 100%;
+  }
+  .entry-tools select:focus { outline: none; border-color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <p class="eyebrow">SOCIAL PSYCHOLOGY / INFLUENCE — <span id="eyebrow-count">147</span> ENTRIES</p>
+    <h1>人を動かす心理法則</h1>
+    <p class="lede">初対面の数十秒で決まることから、立ち居振る舞い、対面のやりとり、返報性、一貫性、社会的証明、交渉の型、判断のクセ、集団と動機づけまで。人と人のあいだで繰り返し観測されてきた法則を、分類して並べた索引です。</p>
+    <p class="lede">「場面」で絞り込めます。初対面の相手に会う前なら、初対面だけを表示してください。分類を組み替えたり、自分の法則を書き足したりもできます。</p>
+  </header>
+
+  <div class="bar">
+    <div class="bar-row">
+      <label class="search-field" for="q">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <circle cx="7" cy="7" r="4.6" stroke="currentColor" stroke-width="1.3" fill="none"></circle>
+          <path d="M10.6 10.6L14 14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path>
+        </svg>
+        <input id="q" type="search" placeholder="検索：返報性、初対面、交渉、bias…" autocomplete="off">
+      </label>
+      <p class="count" id="count">147 / 147</p>
+      <div class="tools">
+        <button type="button" class="tool-btn" id="btn-organize" aria-pressed="false">整理</button>
+        <button type="button" class="tool-btn primary" id="btn-add">＋ 追加</button>
+        <button type="button" class="tool-btn" id="theme-btn">表示：自動</button>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="fgroup" role="group" aria-label="場面で絞り込む">
+        <span class="fg-label">場面</span>
+        <button type="button" class="sc-btn" data-scene="first" aria-pressed="false">初対面</button>
+        <button type="button" class="sc-btn" data-scene="known" aria-pressed="false">関係の中</button>
+        <button type="button" class="sc-btn" data-scene="group" aria-pressed="false">集団・組織</button>
+        <button type="button" class="sc-btn" data-scene="self" aria-pressed="false">自分の判断</button>
+      </div>
+      <div class="fgroup" role="group" aria-label="確からしさで絞り込む">
+        <span class="fg-label">確からしさ</span>
+        <button type="button" class="ev-btn" data-ev="a" aria-pressed="false"><span class="dot"></span>確立</button>
+        <button type="button" class="ev-btn" data-ev="b" aria-pressed="false"><span class="dot"></span>条件付き</button>
+        <button type="button" class="ev-btn" data-ev="c" aria-pressed="false"><span class="dot"></span>議論あり</button>
+        <button type="button" class="ev-btn" data-ev="x" aria-pressed="false" id="ev-x-btn" hidden><span class="dot"></span>自分</button>
+      </div>
+      <button type="button" class="link-btn" id="clear-filters" hidden>絞り込みを解除</button>
+    </div>
+  </div>
+
+  <section class="panel" id="panel" hidden>
+    <div class="panel-head">
+      <h2 id="panel-title">項目を追加</h2>
+      <button type="button" class="link-btn" id="panel-close">閉じる</button>
+    </div>
+    <p class="panel-note">追加した項目・分類・場面の変更は、<strong>この端末のこのブラウザ</strong>に保存されます。サーバーには送られないので、別の端末や他の人には反映されません。持ち運ぶときは下の「書き出し」を使ってください。</p>
+
+    <form id="entry-form" autocomplete="off">
+      <div class="f2">
+        <label class="field" for="f-name">名称<input id="f-name" type="text" required></label>
+        <label class="field" for="f-en">英名・原語（任意）<input id="f-en" type="text"></label>
+      </div>
+      <div class="f2">
+        <label class="field" for="f-cat">分類<select id="f-cat"></select></label>
+        <label class="field" for="f-ev">確からしさ<select id="f-ev">
+          <option value="a">確立</option>
+          <option value="b">条件付き</option>
+          <option value="c">議論あり</option>
+          <option value="x" selected>自分の経験則</option>
+        </select></label>
+      </div>
+      <div class="field">場面（複数可）
+        <div class="scene-picker">
+          <label><input type="checkbox" class="f-scene" value="first">初対面</label>
+          <label><input type="checkbox" class="f-scene" value="known">関係の中</label>
+          <label><input type="checkbox" class="f-scene" value="group">集団・組織</label>
+          <label><input type="checkbox" class="f-scene" value="self">自分の判断</label>
+        </div>
+      </div>
+      <label class="field" for="f-def">定義・内容<textarea id="f-def" rows="2" required></textarea></label>
+      <label class="field" for="f-use">実務での使いどころ（任意）<textarea id="f-use" rows="2"></textarea></label>
+      <label class="field" for="f-warn">注意（任意）<textarea id="f-warn" rows="2"></textarea></label>
+      <div class="f-actions">
+        <button type="submit" class="tool-btn primary" id="f-submit">追加する</button>
+        <button type="button" class="link-btn" id="f-cancel">入力をクリア</button>
+        <span class="f-msg" id="f-msg" role="status"></span>
+      </div>
+    </form>
+
+    <div class="panel-block">
+      <h3>分類</h3>
+      <p class="hint">名前はその場で書き換えられます。項目を別の分類へ移したり場面を変えたりするときは、上の「整理」を押してください。</p>
+      <ul class="cat-list" id="cat-list"></ul>
+      <form id="cat-form" class="cat-form" autocomplete="off">
+        <input id="c-name" type="text" placeholder="新しい分類の名前">
+        <input id="c-note" type="text" placeholder="一行の説明（任意）">
+        <button type="submit" class="tool-btn">分類を追加</button>
+      </form>
+    </div>
+
+    <div class="panel-block">
+      <h3>データの持ち運び</h3>
+      <div class="io-row">
+        <button type="button" class="tool-btn" id="btn-export">書き出し</button>
+        <button type="button" class="tool-btn" id="btn-import">貼り付けて読み込み</button>
+        <button type="button" class="tool-btn" id="btn-download">ファイルに保存</button>
+        <label class="tool-btn file-btn">ファイルから読み込み<input type="file" id="file-import" accept="application/json,.json"></label>
+        <button type="button" class="tool-btn" id="btn-restore" hidden>非表示を戻す</button>
+        <button type="button" class="tool-btn" id="btn-reset">自分の変更を全部消す</button>
+      </div>
+      <textarea id="io-text" rows="4" hidden></textarea>
+      <p class="hint" id="io-msg"></p>
+    </div>
+  </section>
+
+  <section class="legend">
+    <h2>この索引の読み方</h2>
+    <p>心理学の知見は「発見された法則」と「まだ揺れている仮説」が混ざって流通しています。有名でも根拠が弱いものは多く、そこを区別せずに人に使うのは危険です。各項目に確からしさを付けました。</p>
+    <dl>
+      <dt class="tag-a">確立</dt><dd>多数の追試とメタ分析で支持。前提として使ってよい。</dd>
+      <dt class="tag-b">条件付き</dt><dd>効果はあるが、条件と文脈に強く依存する。効果量も大きくはない。</dd>
+      <dt class="tag-c">議論あり</dt><dd>有名だが再現性や解釈に強い批判がある。話のネタ以上には使わない。</dd>
+    </dl>
+  </section>
+
+  <div class="cols">
+    <nav class="toc" aria-label="分類">
+      <h2>CONTENTS</h2>
+      <ol id="toc-list"></ol>
+    </nav>
+    <main class="index" id="index"></main>
+  </div>
+
+  <p class="empty" id="empty">該当する項目がありません。別のことばで検索するか、絞り込みを解除してください。</p>
+
+  <section class="closing">
+    <h2>使う前に</h2>
+    <p>ここにあるのは、人がどう反応しがちかの記述であって、人を思い通りにする手順ではありません。効果量はたいてい小さく、相手・関係・文脈で簡単に反転します。とくに立場が上の側が使うと、相手に断る自由が実質的に無くなり、同じ技法が操作に変わります。</p>
+    <p>実務で確実に効くのは、派手な技法より地味な三つです。<strong>接触の頻度を上げる</strong>、<strong>判断の基準をすり合わせる</strong>、<strong>決め方を公正にする</strong>。個別の法則は、その土台の上での微調整として効きます。</p>
+    <p>そして最も費用対効果が高いのは、他人を動かす側ではなく、自分の判断を疑う側の項目です。根本的帰属の誤り、確証バイアス、サンクコスト、バイアスの盲点。この四つを知っているだけで、人の評価と意思決定の質が変わります。</p>
+  </section>
+
+  <p class="colophon">
+    出典：Cialdini / Kahneman &amp; Tversky / Festinger / Aronson / Asch / Zajonc / Deci &amp; Ryan / Edmondson ほか。<br>
+    再現性の評価は 2015 年以降の大規模追試・メタ分析の状況を反映しています。
+  </p>
+</div>
+<script>
+(function () {
+  "use strict";
+
+  var MODE = "standalone";
+  var BASE = [{"id":"liking","title":"好意と関係形成","en":"LIKING","note":"人が人を好きになるまでに働く力。関係を「始める」局面で効く。","items":[["単純接触効果","Mere exposure effect","a","接触の回数が増えるだけで、対象への好感度が上がる。中身のない接触でも起きるのが特徴。","大事な話ほど「一発の面談」より「短い接触の反復」。顔を出す頻度そのものが資産になる。","最初の印象が明確に否定的な相手では、接触の反復が嫌悪を強めることがある。","known"],["近接性の原理","Propinquity effect","a","物理的・動線的に近い人ほど親しくなる。学生寮の研究では、階段や郵便受けの位置が友人関係の分布をよく説明した。","席配置、フロア、通り道。人間関係の設計は、しばしばレイアウトの設計と同じこと。","","known"],["類似性の法則","Similarity attraction","a","態度や価値観が似ているほど惹かれ合う。趣味や出身地より「物事の判断基準」の一致が強く効く。","共通点探しは属性より判断軸で。「何を大事にするか」が重なると距離は一気に縮む。","","first,known"],["好意の返報性","Reciprocity of liking","a","「この人は自分に好意を持っている」と感じると、こちらも好意を返す。","関係を始める最も確実な一手。好意は思っているだけでは伝わらないので、必ず言葉か行動にする。","","first,known"],["自己開示の返報性","Disclosure reciprocity","a","一方が少し踏み込んだ話をすると相手も同程度返し、それが段階的に深まる。アーロンの「36の質問」はこれを設計したもの。","深さを釣り合わせるのがコツ。いきなり重い話をすると引かれ、浅いままだと関係は動かない。","","first,known"],["ミラーリング（カメレオン効果）","Chameleon effect","b","相手の姿勢・仕草・話す速度に自然に同調すると、好感度とやりとりの円滑さが上がる。","意識するなら仕草より「話す速度と間」。","露骨に真似すると、見抜かれた瞬間に大きく逆効果になる。","first,known"],["ゲイン・ロス効果","Gain-loss effect","b","素っ気なかった人が徐々に好意的になると、はじめから一貫して好意的な人より好かれる。逆方向はより強く嫌われる。","評価は「だんだん上げていく」設計が効く。手放しの称賛から入ると、あとで上げ幅がなくなる。","","known"],["プラットフォール効果（しくじり効果）","Pratfall effect","b","有能だと見られている人が小さな失敗をすると、かえって好感度が上がる。","隙は、実力が伝わったあとに見せると効く。","有能と見られていない人が同じことをすると、単に評価が下がる。効果は非対称。","first,known"],["ベンジャミン・フランクリン効果","Ben Franklin effect","b","人に親切をした側が、その相手を好きになる。行動と態度の矛盾を、変えやすい態度のほうを変えて解消するため。","壁のある相手には、親切にするより「小さく頼る」。相手の専門性を立てる頼み事が最適。","相手に断る自由が実質的にないと、不協和は「やらされた」で解消され効果が消える。","first,known"],["援助の自尊心脅威","Threat-to-self-esteem model","b","助けを受けた側が「無能だと思われた」と感じると、助けてくれた人への好感度がむしろ下がる。","「ありがた迷惑」の正体。支援は、判断と裁量を相手に残す形で渡す。","","first,known"],["自発的特質転移","Spontaneous trait transference","b","他人を「誠実だ」と評すると、聞き手はその特質を話し手本人の性質として記憶してしまう。","人の評判を語るときに最も効く法則。陰口は、その内容がそのまま自分に貼りつく。","","known,group"],["ハロー効果","Halo effect","a","一つの目立つ長所（外見、学歴、話し方）が、無関係な能力の評価まで引き上げる。","評価する側としては自分にかかる補正を疑う。評価される側としては、最初に見える一点の質が全体の印象を決める。","","first,self"],["連合の原理","Association principle","b","人は、快い／不快な文脈と一緒に提示されたものを、その感情ごと記憶する。食事中の交渉が有利になるのはこれ。","悪い知らせの運び手は嫌われる。伝える場と順番は内容と同じくらい効く。","","first,known"],["覚醒の誤帰属（吊り橋効果）","Misattribution of arousal","c","緊張や興奮による生理的覚醒を、目の前の相手への好意と取り違える。","","有名だが効果は限定的で追試の結果も割れる。「一緒に緊張を経験すると距離が縮まる」程度に留める。","first,known"],["上位目標と共通の敵","Superordinate goals","b","対立する集団も、片方だけでは達成できない共通目標を与えられると協力し、やがて好意的になる。","部署間対立に効く数少ない打ち手。","「共通の敵」型は一時的で、外部の敵が消えると内部対立に戻る。原実験の手続きにも批判がある。","group"],["接触仮説","Contact hypothesis","b","集団間の偏見は、対等な立場・共通目標・協力関係・制度的支持という条件が揃った接触によって減る。","ただ会わせるだけでは減らない。条件のほうが本体。","","group"],["名前を呼ぶ効果","Name-calling effect","b","自分の名前は特別に注意を引き、名指しで呼びかけられると要求への応諾率も好感度も上がる。","メールでも会話でも、宛名と呼びかけを省かない。依頼は「誰か」ではなく名指しで。","","first,known"],["相補性仮説","Complementarity hypothesis","c","欲求が補い合う相手に惹かれるという説。「正反対が惹かれ合う」の理論版。","","実証的な支持は弱い。長期的にはむしろ類似性のほうが効くという結果が多い。","known"]]},{"id":"first-impression","title":"初対面の最初の数十秒","en":"FIRST IMPRESSION","note":"会って数秒で固まってしまう部分と、そこで実際に何が評価されているか。","items":[["0.1秒の第一印象","Thin-slice first impressions","a","顔を0.1秒見せただけで下された信頼性の判断は、提示時間を延ばしても内容が変わらない。長く見て増えるのは判断の中身ではなく、判断への確信の強さ。","最初の印象は瞬時に固まり、その後は裏づけ探しが始まる。会う前の身なりと入室の数秒に投資する価値はここにある。","","first"],["顔の印象の的中率","Validity of face-based trust","a","顔から受ける「信頼できそう」という印象は、その人の実際の行動をほとんど予測しない。印象は強く、速く、そして当たらない。","自分が評価する側では、第一印象を仮説として扱い、行動の記録で上書きする。採用面接で最も高くつく誤りがここ。","","first,self"],["温かさと有能さ","Warmth & competence (SCM)","a","人の印象評価はこの2軸でほぼ説明でき、温かさのほうが先に、強く評価される。温かさが確認されて初めて、有能さがプラスに働く。","初対面で実績から入ると「手強い相手」になる。先に関心と善意を示し、能力は後から見せる。内容ではなく順序の問題。","温かさが低いまま有能だと評価されると、警戒と嫉妬の対象になる。有能さの先出しは逆効果になりうる。","first,known"],["信頼の3要素","Ability, benevolence, integrity","a","信頼は「能力」「善意」「誠実さ」の3つで構成される。初対面では相手の能力を確かめる材料がないため、後ろ2つのシグナルが判断を決める。","小さな約束を期限どおり守る、不利な情報を先に伝える、相手の利益を具体的に挙げる。能力の証明より効く。","","first,known"],["魅力のハロー","Physical attractiveness stereotype","b","外見的魅力の高い人は、無関係な能力や人柄まで高く評価される。いわゆる「美しいものは善い」ステレオタイプ。","評価する側では意識的に切り離す。評価される側では、身だしなみの質はそのまま中身の評価に転嫁されると割り切る。","","first,self"]]},{"id":"nonverbal","title":"立ち居振る舞いと声","en":"NONVERBAL","note":"言葉より先に読まれる情報。ほとんどが「そう見える」という知覚の話で、実際の信頼性とは別である点に注意。","items":[["動作の落ち着き","Movement smoothness","b","ゆっくり滑らかで無駄のない動作は「統制がきいている」印として読まれ、落ち着き・有能さ・信頼性の評価を上げる。","座る、資料を出す、立ち上がる。初対面で意識するなら、話す内容よりこの3動作のほうが効く。","あくまで知覚の話で、実際の信頼性とは無関係。遅すぎると不自然、あるいは威圧的に読まれる。","first,known"],["自己接触とそわそわ","Self-touch & fidgeting","b","顔や首を触る、手元の小刻みな動きは、見る側に不安や隠し事の印として読まれる。","見られる側としては減らす価値がある。","実際にはそわそわは嘘の有効な手がかりではない（メタ分析で否定されている）。見る側としては判断材料にしてはいけない。","first,self"],["即時性行動","Immediacy behaviors","a","前傾姿勢、開いた姿勢、適度な距離、うなずき、視線といった「近さ」を示す非言語の束が、温かさと好意の知覚を直接上げる。","腕組みと後ろへの反り返りをやめるだけで大半は満たせる。個々の技法としてではなく、束で効く。","","first,known"],["アイコンタクト","Eye contact","b","適量の視線は信頼と好意を上げ、過剰は威圧、不足は回避や不誠実と読まれる。","話すときより「聞くとき」に多めが無難。文化差と個人差が大きいので、相手の量に合わせる。","","first,known"],["デュシェンヌ・スマイル","Duchenne smile","b","目元の筋肉が動く笑みは、口元だけの意図的な笑みより、信頼性と誠実さの評価を上げる。見る側は無自覚に区別している。","意識して作れるものではないので、笑顔を作る努力より、笑える要素を場に持ち込むほうが早い。","","first,known"],["声の低さと安定","Vocal pitch & steadiness","b","低めで揺れの少ない声は、有能さと信頼性の評価を上げる。話速には「速いと有能に、遅いと温かく聞こえる」というトレードオフがある。","緊張で上ずるのが最も損。話し始める前に一拍置いて息を落とす。ゆっくりが常に正解ではなく、何を見せたいかで選ぶ。","","first,known"],["握手","Handshake","b","しっかりした握手は、好印象や外向性の評価と関連する。","文化と場面への依存が大きく、国内の商談では一般的でない。優先度は低い項目。","","first"],["パワーポーズ","Power posing","c","広く開いた姿勢を2分取ると自信とホルモンが変化するとされた説。講演を通じて広く知られた。","","ホルモン変化と行動への効果は大規模追試で再現に失敗し、原論文の著者の一人も結論を撤回した。「主観的な気分が少し上がる」以上の主張はできない。信じている人が多いため、あえて載せている。","first,self"]]},{"id":"conversation","title":"対面のやりとり","en":"CONVERSATION","note":"会っている最中の振る舞い。配置や仕組みではなく、その場で選べる部分。","items":[["反応性","Perceived partner responsiveness","a","親密さを決めるのは自己開示そのものより、開示に対して「理解された・認められた・大事にされた」と相手が感じられたかどうか。","聞いた後の一言がすべて。要約して返す、感情に触れる、具体をひとつ拾う。先回りのアドバイスは最も反応性の低い返し方。","","first,known"],["質問を重ねる効果","Question-asking","a","質問、とくに相手の答えを受けた追加質問を多くする人は好かれる。しかも本人はその効果にほとんど気づいていない。","新しい話題を出すより、いま出た話を一段掘る。「それはいつからですか」「どうしてそう思ったんですか」。","","first,known"],["自分語りの報酬性","Self-disclosure reward","b","人は自分について話すこと自体に報酬を感じる。脳の報酬系が、食事や金銭と似た反応を示す。","「話させてもらえた」という感覚がそのまま好意になる。会話の持ち時間は相手に多く配る。","","first,known"],["言語スタイルの一致","Language style matching","b","語彙や言い回し、文の調子が揃っている相手同士ほど、関係が成立しやすく長続きしやすい。","相手が短く話すなら短く、丁寧なら丁寧に。内容ではなく形式を合わせる。","","first,known"],["雑談の効果","Schmoozing","b","本題に入る前の短い雑談が、交渉の合意率と相手からの信頼を上げる。とくに顔が見えない相手で差が大きい。","電話やオンラインほど効く。「早速ですが」で始めるのは、対面より損が大きい。","","first,known"],["ライキング・ギャップ","Liking gap","b","初対面の会話の後、人は「相手が自分をどれだけ好きか」を一貫して過小評価する。実際には思っているより好かれている。","面談後の手応えのなさは、かなりの部分が錯覚。次の一手を控える理由にしない。","","first"],["情動伝染","Emotional contagion","a","表情、声、姿勢を通じて感情は自動的に伝染する。機嫌は個人の内面ではなく、その場に配られるもの。","立場が上の人間の機嫌ほど強く伝染する。自分の不調を場に持ち込まない技術が、そのまま管理職の技術になる。","","known,group"],["好意の予期の自己成就","Expectation of liking","b","「相手は自分を好いている」と思って接した人は、実際に好かれる振る舞いをし、本当に好かれる。","苦手意識はそのまま相手に伝わり、現実になる。先に好意を仮定して入るほうが、結果として正しくなる。","","first,known"]]},{"id":"conflict","title":"対立・謝罪・信頼の回復","en":"REPAIR","note":"何かが壊れた後に効く法則。壊れる前の技法より、ここを持っている人のほうが少ない。","items":[["謝罪の有効成分","Components of an apology","a","謝罪は複数の要素でできており、効果はそれぞれ違う。最も効くのは「責任の承認」で、説明・反省の表明・補償の申し出・再発防止がそれに次ぐ。言い訳はこれらを打ち消す。","「ご迷惑をおかけしました」だけでは成分が足りない。何が自分の責任だったのかを名指しする一文を必ず入れる。","","known,first"],["信頼回復の非対称性","Trust repair asymmetry","a","能力不足による失敗は謝罪で回復しやすいが、誠実さへの疑い（嘘・隠蔽）は謝罪ではほとんど回復しない。両者はまったく別の壊れ方をする。","失敗を「できなかった」と「隠した」で分けて扱う。報告の遅れは、前者を後者に変えてしまう最大の要因。","","known"],["感謝フレーミング","Gratitude over apology","b","迷惑をかけた場面で「すみません」の代わりに「ありがとうございます」と言うと、相手の好感度も相手自身の自己評価も上がる。謝罪は相手に負担を思い出させ、感謝は相手の貢献を際立たせる。","「遅れてすみません」より「待っていただいてありがとうございます」。謝るべき場面では謝った上で、締めを感謝にする。","","known,first"],["怒りの表出の二面性","Expressed anger in negotiation","b","交渉で怒りを示すと相手は譲歩しやすくなる。同時に相手の敵意と報復意欲を高め、次の取引を壊す。","一回きりの交渉以外では割に合わない。継続する関係では、怒りではなく「困っている事実」を出す。","","known"],["カタルシス神話","Catharsis myth","a","怒りは発散すれば収まる、という考えは誤り。殴る・叫ぶ・ぶちまけるといった発散行動は、怒りと攻撃性をむしろ高める。","怒っている相手に全部吐き出させるのは逆効果になりうる。事実の確認と、時間と距離のほうが効く。","「話を聴くこと」と「怒りを煽って発散させること」は別物。前者は有効で、ここで否定されているのは後者。","known,self"],["自己正当化の罠","Self-justification","a","自分の判断が誤っていたと認めるのは不協和を生むため、人は誤りを認める代わりに判断を正当化し、同じ方向へさらに踏み込む。","「あのとき決めた人」に撤回を求めるのに、事実の提示だけでは足りない。面子を潰さない退路を同時に用意する。","","known,self"],["反応的価値下げ","Reactive devaluation","b","同じ提案でも、対立している相手が出したというだけで、人はその価値を低く見積もる。","通したい案は、相手の口から出る形にする。選択肢として並べ、相手に選ばせる。","","known"],["非難の応酬","Blame escalation","b","非難された側は自分の正当性を立証しようとし、相手の落ち度を探す。非難は構造的に往復する。","問題を人ではなく手順に帰属させる言い方に変えるだけで、往復が止まることが多い。","","known,group"]]},{"id":"reciprocity","title":"返報性","en":"RECIPROCITY","note":"受け取ったものを返さずにいられない、という最も基本的な社会のルール。","items":[["返報性の原理","Reciprocity","a","人は受け取ったものを返さずにいられない。負債感は不快なので、それを解消することが行動の動機になる。","頼んでいない親切でも発生する。だから強力で、だから悪用されやすい。","","known"],["譲歩の返報性","Reciprocal concessions","a","相手が要求を下げると、こちらも下げねばと感じる。ドア・イン・ザ・フェイスの土台。","交渉では譲る順番と幅そのものが情報になる。いきなり最終案を出すと、譲歩を返してもらえない。","","known"],["過剰返報","Over-reciprocation","b","負債感は不快なため、受けた親切より大きなものを返してしまう傾向がある。","小さな貸しで大きな見返りが動く。逆に、相手に大きな負債感を負わせると関係が重くなり避けられる。","","known"],["プリギビング（先行投資）","Pre-giving","a","先に無償で与えることで、要求を出す前に応諾の土壌をつくる。試食、無料サンプル、先出しの情報提供。","「見返りを求めていない」形で渡すほど効く。条件を付けた瞬間に取引になり、効果は落ちる。","","first,known"],["恩の評価ギャップ","Beneficiary gap","b","与えた側は自分の貢献を過大に、受けた側は過小に見積もる。恩の価値は、与えた側の記憶の中でだけ長く残る。","「あれだけやったのに」は構造的に起きる。見返りを前提にした貸しは、回収できないものと考える。","","known"]]},{"id":"consistency","title":"一貫性とコミットメント","en":"CONSISTENCY","note":"いちど口に出した自分、行動した自分と、辻褄を合わせようとする力。","items":[["コミットメントと一貫性","Commitment & consistency","a","人は自分の過去の言動と一貫していたいという強い欲求を持ち、それに合うよう後の行動を調整する。","小さくても「自分で選び、口に出し、記録に残した」ものほど後を縛る。","","known"],["認知的不協和","Cognitive dissonance","a","行動と態度が矛盾すると不快になり、変えやすいほう（たいていは態度）を変えて辻褄を合わせる。","態度を変えたければ、説得より先に小さな行動を起こしてもらうほうが早い。","","known"],["フット・イン・ザ・ドア","Foot-in-the-door","a","小さな要求を通してから本命の要求を出すと、応諾率が上がる。自己イメージの一貫性が働くため。","最初の依頼は「断る理由がないほど軽い」ことが条件。","報酬を出すと自発性が消え、効かなくなる。","known"],["ロー・ボール","Low-ball","b","有利な条件で承諾を得てから条件を下げても、いったん下した決定は維持されやすい。","","効果は確認されているが、相手が後で気づいたときの信頼損失が大きい。実務では使うべきでない部類。","known"],["公開表明効果","Public commitment","b","人前で表明した意見や目標ほど、後から変えにくくなる。","決定事項は「誰が、いつまでに」を発言と記録に残す。逆に本音を探る段階で公開表明させると、立場が固まってしまう。","","known"],["努力の正当化","Effort justification","a","手に入れるのに苦労したものほど価値が高いと感じる。入会儀礼が厳しい集団ほど、成員の愛着は強い。","研修や選考の負荷は、コストであると同時に愛着の源でもある。楽にしすぎると帰属意識も下がる。","","known,group"],["イケア効果","IKEA effect","b","自分が手間をかけて作ったものを、客観的な出来以上に高く評価する。","施策は「一緒に作る」と定着する。同時に、自分が作った仕組みへの過大評価も同じ原理で起きる。","","known"],["サンクコスト効果","Sunk cost fallacy","a","すでに投じた回収不能なコストが惜しくて、損だとわかっている選択を続けてしまう。","撤退基準は投入前に決めて文書にしておく。判断の場で決めようとすると、必ず引きずられる。","","self"],["ラベリング効果","Labeling technique","b","「あなたは〜な人だ」と特性を貼ると、その後の行動がラベルのほうへ寄っていく。","部下に貼るラベルは予言になる。否定的なラベルも同じ強さで効くので、評価の言葉は慎重に選ぶ。","","known"]]},{"id":"social-proof","title":"社会的証明と同調","en":"SOCIAL PROOF","note":"何が正しいかを、周囲がどうしているかで決めてしまう力。不確実なときほど強く働く。","items":[["社会的証明","Social proof","a","何が正しいかを、他人がどうしているかで判断する。状況が不確実なときと、自分と似た他者の行動ほど強く効く。","最も安価で強い説得材料。ただし、相手にとっての「みんな」が誰なのかで効果が決まる。","","first,known,group"],["同調","Conformity (Asch)","a","明らかに誤った多数意見にも、相当数の人が同調する。一方で、全会一致が一人でも崩れると同調は大きく減る。","反対意見を公然と出せる人を一人つくるだけで、集団の判断精度は上がる。","","group"],["記述的規範と命令的規範","Descriptive vs injunctive norms","a","「実際にみんながしていること」と「すべきとされていること」は別々に働き、食い違うと打ち消し合う。","「まだ3割しか提出していません」は、出さない人が多数派だと伝える逆効果メッセージになる。","","group"],["多元的無知","Pluralistic ignorance","a","全員が内心では反対なのに、他の全員は賛成だと誤解して、誰も言い出せなくなる状態。","匿名の事前アンケートや、立場が下の人から順に発言する運用で崩せる。","","group"],["傍観者効果","Bystander effect","a","周囲に人が多いほど責任が分散し、誰も動かなくなる。","依頼は必ず名指しで。「誰か」宛のタスクは実行されない。","","group"],["バンドワゴン効果","Bandwagon effect","a","支持が多いという情報そのものが、さらに支持を増やす。","勢いは事実を追い越す。だから初期の見え方の設計が結果を変える。","","group"],["情報カスケード","Information cascade","b","各人が自分の持つ情報より先行者の行動を信じて追随し、誤った結論が集団規模で固定される。","発言順を変える、根拠を先に共有する、といった手続きで断ち切れる。","","group"]]},{"id":"authority","title":"権威と信頼","en":"AUTHORITY","note":"誰が言ったかで中身の評価が変わる。信頼は、内容より先に人に貼りつく。","items":[["権威への服従","Obedience to authority","c","正当と見なされた権威の指示には、自分の判断に反してでも従いやすい。ミルグラムの実験で知られる。","","実験手続きや解釈に強い批判があり、「盲目的な服従」よりも「権威を正当だと信じたうえでの協力」に近いという再解釈が有力。","group,self"],["権威のトリガー","Authority cues","b","肩書き、服装、道具といった権威の記号だけで、中身を確かめずに従いやすくなる。","判断する側では、記号と中身を意識的に切り離す。伝える側では、記号に頼りすぎると中身が検証されなくなる。","","first,self"],["弱点の先出し","Two-sided messaging","b","自ら短所や不利な情報を先に認めると、その後の主張の信頼性が上がる。","提案の弱点は、相手に見つけられる前に自分で出す。順番が効果を決める。","","first,known"],["信頼性は利害で測られる","Trustworthiness via self-interest","b","自分の利益に反することを言う人ほど信頼される。","「これはうちにとっては不利ですが」と言える範囲を持っておくと、他の主張まで通りやすくなる。","","first,known"],["役割の力","Power of roles","c","与えられた役割や状況が、個人の性格以上に行動を規定するという主張。スタンフォード監獄実験が根拠とされてきた。","","同実験は演技指導や選抜バイアスなど方法論的批判が強く、根拠として引くべきではない。役割や状況の影響自体は他の研究で支持される。","group"]]},{"id":"scarcity","title":"希少性と損失","en":"SCARCITY","note":"得られるものより、失うもののほうが人を動かす。","items":[["希少性の原理","Scarcity","a","手に入りにくいものほど価値が高く見える。数量、期限、機会の限定すべてに効く。","「得られる」形より「失うかもしれない」形にすると強く効く。","","known"],["損失回避","Loss aversion","a","同額の利得より損失のほうを強く感じる。おおむね2倍前後とされる。","提案は「導入で得られるもの」より「やらないと失うもの」で語ると通りやすい。","多用すると不信と疲弊を招く。事実の範囲を超えたら使わない。","known,self"],["保有効果","Endowment effect","a","いったん自分のものになると、手放すときの評価額が、手に入れる前の評価額より跳ね上がる。","無料お試しが効く理由。組織で既存の権限や人員を手放させるのが極端に難しい理由でもある。","","known,self"],["心理的リアクタンス","Psychological reactance","a","選択の自由が脅かされると、奪われた選択肢の魅力が上がり、反発が生まれる。","「やれ」と言うほど動かなくなる。選択肢を2つ示すだけで反発は大きく減る。","","known"],["ロミオとジュリエット効果","Romeo & Juliet effect","c","周囲の反対が強いほど当事者の結びつきが強まるという説。","","初期研究以降の追試では支持されにくく、むしろ周囲の支持のほうが関係を安定させるという結果が多い。","known"],["締切効果","Deadline effect","a","期限が示されると、それまで動かなかった判断が期限直前に集中する。","期限のない依頼は実行されない。期限を相手自身に決めてもらうと守られやすい。","","known"],["競争の可視化","Competition cue","b","「他にも欲しい人がいる」という情報は、希少性を体感させて即断を促す。","採用や商談で事実として伝えられる場合は強力。事実でないなら使わない。","","known"]]},{"id":"asking","title":"要求の出し方・交渉","en":"ASKING","note":"同じ内容でも、順番・数字・言い回しで通り方が変わる。使い方を誤れば操作になる領域でもある。","items":[["ドア・イン・ザ・フェイス","Door-in-the-face","a","断られる前提の大きな要求から入り、本命の小さな要求に下げると通りやすい。譲歩の返報性が働く。","同じ人が、間を空けずに続けて要求すること。","最初の要求が非常識な水準だと、譲歩ではなく不信として受け取られる。","known"],["アンカリング","Anchoring","a","最初に提示された数字が基準になり、その後の判断がそこに引っ張られる。無関係な数字でも起きる。","価格でも工数でも、先に数字を出したほうが有利な場面は多い。相手のアンカーには、別の基準を提示して打ち返す。","","first,known"],["BYAF（断ってもかまいません）","But-you-are-free","b","要求の最後に「断る自由がある」と明示すると応諾率が上がる。リアクタンスを解除するため。","「もちろん難しければ結構です」の一言。対面でも文面でも効く。","","known"],["「なぜなら」効果","Placebic reasons","b","理由を添えるだけで応諾率が上がる。小さな要求では、理由の中身が空疎でも効いてしまう。","","要求が大きくなると中身のない理由は効かなくなる。依頼には本物の理由を添える。","known"],["フレーミング効果","Framing","a","同じ内容でも「90%成功」と「10%失敗」では選択が変わる。","事実を変えずに伝わり方を変えられる。だからこそ、自分が受け取る情報のフレームも疑う。","","known,self"],["デコイ効果","Decoy effect","b","明らかに劣る第三の選択肢を足すと、それに似た本命が相対的に良く見え、選ばれやすくなる。","提案は単独で出すより、比較できる形で出すほうが決まる。","","known"],["極端の回避（松竹梅）","Extremeness aversion","a","3つの選択肢があると、人は真ん中を選びやすい。","通したい案は真ん中に置く。2案だと「やる／やらない」の対立構造になりやすい。","","known"],["ザッツ・ノット・オール","That's-not-all","b","相手が返事をする前に特典を追加すると、同じ条件を最初から示すより応諾率が上がる。","「返事の前」に足すのが条件。譲歩として受け取られるため。","","known"],["精密な数字の効果","Precision effect","b","端数のある具体的な数字は、丸い数字より根拠があるように見え、相手の譲歩要求も小さくなる。","見積もりや目標値は、算出根拠のある精密な数字で出す。","","known"],["初頭効果と親近効果","Primacy & recency","a","一連の情報のうち、最初と最後が記憶に残りやすい。","提案の要点は冒頭と締めに置く。真ん中に埋めた情報は残らないものと考える。","","first,known"],["ピーク・エンドの法則","Peak-end rule","b","体験の評価は、感情のピークと終わり方でほぼ決まり、持続時間はあまり効かない。","面談も研修も、終わり方の設計に投資する。長さを削っても満足度はさほど落ちない。","","known,self"],["単なる測定効果","Mere-measurement effect","b","「やりますか？」と尋ねられるだけで、その行動の実行率が上がる。","研修の最後に「次の1週間で何を試すか」を書かせる。問いがそのまま行動をつくる。","","known"],["沈黙の力","Strategic silence","b","提案や質問のあとに黙っていると、相手が沈黙を埋めようとして情報や譲歩を出す。","","交渉実務で広く使われるが、統制された実験的裏づけは他項目ほど強くない。","known"],["選択肢過多","Choice overload","c","選択肢が多すぎると決められなくなるという説。ジャムの実験で有名。","","メタ分析では平均効果はほぼゼロで、条件次第。実際には「多すぎる」より「比較軸が示されていない」ことが問題であることが多い。","known"]]},{"id":"negotiation","title":"交渉の構造","en":"STRUCTURE","note":"言い方の技法ではなく、交渉力そのものがどこから来るか。","items":[["BATNA","Best alternative to a negotiated agreement","a","交渉力は話術ではなく「合意しなかった場合の最善の代替案」の質で決まる。代替案が強い側が、実際に強い。","準備の時間は、言い回しの検討ではなく代替案づくりに使う。相手のBATNAを推定することも同じだけ重要。","","known"],["パイ固定化の誤謬","Fixed-pie bias","a","交渉を取り分の奪い合いだと思い込み、双方の利得を増やす組み合わせを見逃す。実際には、優先順位の違う項目を交換すると両者が得をする。","条件を1つずつ順に詰めない。複数項目をまとめて扱い、互いに何が最も重要かを開示するだけで解が見つかることが多い。","","known"],["立場ではなく利害","Interests over positions","a","対立しているのは表明された立場であって、その裏にある利害は両立することが多い。","「納期を2週間縮めてほしい」の理由を聞く。理由のほうに、安く応えられる別の解がある。","","known"],["聞いた側が設計する","Information asymmetry","b","交渉で得をするのは多く話した側ではなく、多く聞いた側。相手の制約と優先順位を知っている側が条件を設計できる。","最初の時間を質問に使う。こちらの条件は、相手の制約が見えてから出す。","","known"],["譲歩の形で伝える","Concession pattern","b","譲歩の幅を徐々に小さくすると「限界が近い」と伝わる。均等に譲ると「まだ出る」と読まれる。","譲歩のたびに見返りを求める。そうして初めて、譲歩が情報として機能する。","","known"]]},{"id":"teaching","title":"伝える・教える","en":"TEACHING","note":"説明が通じない、研修が残らないときに開く分類。","items":[["知識の呪い","Curse of knowledge","a","いちど知ってしまうと、知らない状態を想像できなくなる。詳しい人ほど、相手に何が伝わっていないかが見えない。","説明の良し悪しは自分では判定できない。「わかりましたか」ではなく、相手に説明させて確認する。","","known,group"],["説明深度の錯覚","Illusion of explanatory depth","a","人は自分の理解の深さを過大評価しており、実際に仕組みを説明させられると、理解が浅いことに自分で気づく。","研修やOJTで唯一機能する確認方法は「人に説明してみてください」。本人の自己申告は当てにならない。","","known,group"],["具体例の優位","Identifiable victim effect","a","統計より、一人の具体的な事例のほうが人を動かす。数字が大きくなるほど、かえって反応は鈍くなる。","品質の訴えは件数ではなく、1件の具体的な顛末で語る。数字は根拠として後ろに置く。","","known,group"],["想起練習（テスト効果）","Retrieval practice","a","読み返すより、思い出す作業のほうが記憶に残る。しかも主観的な手応えは逆で、読み返すほうが「覚えた気」になる。","研修の最後に資料を配り直すのではなく、思い出して書かせる。手応えで方法を選ばない。","","known,group"],["分散学習","Spacing effect","a","まとめて一度に学ぶより、間隔を空けて繰り返すほうが定着する。","年1回の集合研修は、形式として最も定着しにくい。短時間を数回に割るほうが、合計時間が同じでも残る。","","group"],["認知負荷","Cognitive load","a","一度に処理できる情報量には限りがあり、超えると理解そのものが止まる。","資料の情報量を減らすのは手抜きではなく設計。話しながら同時に文字を読ませると、二重処理でどちらも入らない。","","known,group"],["物語の形式","Narrative advantage","b","物語の形を取った情報は、同じ内容の説明文より記憶され、他人に再生される。","伝えたい原則は、実際にあった一件に乗せる。原則だけを渡しても残らない。","","known,group"]]},{"id":"systems","title":"仕組みで動かす","en":"SYSTEMS","note":"説得が効かない場面の代替手段。意欲ではなく環境のほうを変える。","items":[["摩擦の除去","Channel factors","a","行動を決めるのは動機の大きさより、途中にある小さな障害の有無。手順が1つ減るだけで実行率が大きく変わる。","「やる気がない」と見える場面の多くは、提出先がわからない、様式が探しにくいといった摩擦。説得の前に手順の数を数える。","","known,group"],["顕著性","Salience","b","目に入るものが行動を決める。情報は存在するかどうかではなく、判断の瞬間に見えているかどうかで効く。","「マニュアルに書いてある」は機能しない。作業の手元に置く。","","known,group"],["フレッシュスタート効果","Fresh start effect","b","月初、年度初め、異動直後といった区切りの直後は、新しい行動を始める意欲が一時的に高まる。","新しい運用の開始日を区切りに合わせるだけで、定着率が変わる。","","known,group"],["習慣のきっかけ","Habit cues","a","習慣は意志ではなく文脈の合図で起動する。環境が変わると、意志と無関係に習慣は壊れ、また作り直せる。","新しい手順は「いつ・どこで・何の直後に」まで決める。異動や現場変更は、悪い習慣を切る好機でもある。","","known"]]},{"id":"bias","title":"判断のクセ","en":"BIASES","note":"人を動かす前に、自分の判断を疑うための項目。実務で最も効くのはこの分類。","items":[["確証バイアス","Confirmation bias","a","自分の仮説を支持する情報ばかり集め、反証を軽く扱う。","「この見立てが間違っているとしたら、どんな事実が出るか」を先に書き出しておく。","","self"],["利用可能性ヒューリスティック","Availability heuristic","a","思い出しやすい事例ほど、頻度や確率が高いと判断する。直近の事故や目立つ失敗が過大評価される。","印象ではなく件数で語る癖をつける。","","self"],["代表性ヒューリスティック","Representativeness heuristic","a","典型イメージへの当てはまりで判断し、もとの比率（基礎確率）を無視する。","「いかにも〜な人」という評価は、母集団の比率を確認してから。採用面接で最も出やすい歪み。","","self"],["根本的帰属の誤り","Fundamental attribution error","a","他人の行動を、状況ではなく性格のせいにしすぎる。自分の行動については逆に状況のせいにする。","「やる気がない」と見えたら、まず仕組みと制約を疑う。マネジメントで最も費用対効果の高い一項目。","","known,self"],["行為者‐観察者バイアス","Actor-observer bias","b","自分の失敗は状況のせい、他人の失敗は性格のせいにする非対称性。","評価面談で最も歪みが出るところ。事実と解釈を分けて書くだけで精度が上がる。","","self"],["自己奉仕バイアス","Self-serving bias","a","成功は自分の実力、失敗は外部要因に帰属する。","振り返りを個人の内省だけに任せない。第三者の記録を挟む。","","self"],["後知恵バイアス","Hindsight bias","a","結果を知った後では「最初からわかっていた」と感じ、当時の不確実性を過小評価する。","判断時点の想定を書き残しておくと、事後検証がはじめて機能する。","","self"],["ダニング＝クルーガー効果","Dunning-Kruger effect","c","能力の低い人ほど自分の能力を過大評価する、とされる現象。","","同じパターンがランダムデータからも生じるという統計的アーティファクト批判が強い。人を評する言葉としては使わない。","self"],["現状維持バイアスとデフォルト効果","Status quo bias & defaults","a","変更にはコストがかかると感じ、初期設定のまま留まる。臓器提供の同意率が国によって大きく違うのは、デフォルトの差で説明される。","行動を変えたいなら、説得より初期設定を変える。「やらない」が既定の仕組みは動かない。","","self"],["認知的流暢性","Processing fluency","a","処理しやすいものほど、好ましく、正しく、簡単だと感じる。読みやすい書体、言いやすい名前。","資料の読みやすさは、そのまま内容の説得力として受け取られる。","","first,self"],["真実性の錯覚","Illusory truth effect","a","同じ主張を繰り返し聞くと、真実らしく感じる。事前に誤りだと知っていても起きる。","組織の中の「よく聞く話」を、根拠を確かめないまま前提にしない。","","self,group"],["内集団バイアス","In-group bias","a","くじ引き同然の恣意的な区分でも、人は自分の集団を優遇する。","部署間対立は性格の問題ではなく構造の問題。共通目標だけがまともな解。","","group,self"],["公正世界仮説","Just-world hypothesis","b","世界は公正であってほしいと信じたいため、不運に遭った人に落ち度を探してしまう。","被害を受けた側への二次的な非難はここから生まれる。事案の検証では意識的に切り離す。","","self"],["バイアスの盲点","Bias blind spot","a","他人のバイアスは見えるが、自分のバイアスは見えない。バイアスを学んだ人ほど強く出ることもある。","自己点検ではなく手続きで防ぐ。チェックリスト、第三者レビュー、事前の基準設定。","","self"],["プライミング効果","Social priming","c","直前に触れた言葉や概念が、無意識のうちに後の行動を左右するという説。","","社会的プライミングの著名な研究の多くは大規模追試で再現に失敗している。知覚レベルのプライミングとは区別が必要。","self"]]},{"id":"evaluation","title":"評価と指標","en":"MEASUREMENT","note":"人と仕事を測るときに入り込む歪み。測られる側ではなく、測る側に回ったときに効く。","items":[["グッドハートの法則","Goodhart's law","a","指標が目標になった瞬間、その指標は良い指標ではなくなる。測られる側は指標を上げる行動に最適化し、本来測りたかったものから離れていく。","単一指標の目標化は必ず歪む。相反する指標を組み合わせる（速度と品質、件数と再発率）。","","group,self"],["計画の誤謬","Planning fallacy","a","自分の計画にかかる時間と費用を一貫して過小に見積もる。過去に同じ失敗をしていても改善しない。一方、他人の計画なら正確に見積もれる。","見積もりは本人以外にも出させる。あるいは「似た案件が実際どれだけかかったか」から入る。立ち上げ案件で最も高くつくバイアス。","","self,group"],["評価者エラー","Rater errors","a","評価には体系的な歪みがある。全体に甘くなる寛大化、無難な中央に寄る中心化、直前に見た人と比べてしまう対比効果。","評価は人ごとに完結させず、同じ項目で全員を横に並べて比較する。見る順序も固定しない。","","self,group"],["直近効果（評価期間）","Recency in appraisal","b","評価期間の全体ではなく、直近数週間の出来事に引っ張られる。","記録を残していない評価は、ほぼ直近の印象でしかない。四半期ごとの短いメモが、そのまま評価の質になる。","","self"],["生存者バイアス","Survivorship bias","a","成功した事例だけが目に入り、同じことをして消えた事例は見えない。そのため成功要因を取り違える。","うまくいった現場のやり方を横展開する前に、同じやり方で失敗した現場がないかを探す。","","self,group"],["ピーターの法則","Peter principle","b","人は現職で有能であるがゆえに昇進し、無能になる段階まで昇進する。現職の成績は、次の職務の適性をあまり予測しない。","優秀なプレイヤーをそのまま管理職にする前に、必要な能力が別物でないかを見る。","風刺として生まれた法則だが、営業職の昇進データを用いた実証研究でも、この方向の結果が確認されている。","group,self"]]},{"id":"group","title":"集団と組織","en":"GROUPS","note":"個人では起きないことが、人数が増えると起きる。マネジメントの前提になる項目。","items":[["ピグマリオン効果とゴーレム効果","Pygmalion & Golem effects","b","期待をかけられた側は伸び、期待されない側は伸びない。期待が接し方を変え、接し方が結果を変える。","期待は言葉より、任せる仕事の質と量に表れる。","元研究の効果量は再分析で小さいとされる。ただし「期待が接し方を変える」経路自体は支持されている。","group"],["社会的手抜き","Social loafing","a","集団で作業すると一人あたりの努力量が下がる。人数が増えるほど顕著。","個人の貢献が見えるようになると消える。役割と成果物を個人に紐づける。","","group"],["社会的促進と抑制","Social facilitation","b","他者の存在は、慣れた課題の成績を上げ、不慣れな課題の成績を下げる。","習熟したことは人前で、学習中のことは一人で。研修設計にそのまま使える。","","group"],["集団極性化","Group polarization","a","議論を経ると、集団の結論は個人の平均よりも極端な方向に振れる。","「話し合ったから穏当な結論になる」は誤り。議論の前に個人の意見を書かせておく。","","group"],["集団思考","Groupthink","b","結束の強い集団が、一致を優先して批判的検討を欠く。","反対役を制度として置く、リーダーは最後に意見を言う、が定石。","","group"],["心理的安全性","Psychological safety","a","対人リスクを取っても罰されない、という共有された信念。学習行動とエラー報告の量を左右する。","「仲が良い」ではなく「言いにくいことが言える」。まずリーダーが自分の失敗を先に開示する。","","group"],["ホーソン効果","Hawthorne effect","c","観察されているという事実だけで行動やパフォーマンスが変わる、とされる現象。","","元データの再分析では効果は弱く、解釈も一定しない。「見られていると変わる」は程度問題として扱う。","group"],["手続き的公正","Procedural justice","a","人は結果そのものより、決め方が公正だったかで納得の度合いを決める。発言機会、基準の一貫性、説明の有無が効く。","望まない結果を伝える場面で最も効く。決定前に意見を聞き、基準と理由を説明する。","","known,group"]]},{"id":"motivation","title":"動機づけ","en":"MOTIVATION","note":"やる気は性格ではなく、条件で決まる。条件のほうを設計する。","items":[["アンダーマイニング効果","Overjustification effect","b","もともと自発的にやっていた行動に報酬を与えると、報酬がなくなったとき意欲が下がる。","自発的な工夫に金銭報酬を紐づけない。承認と裁量のほうが持続する。","","known"],["自己決定理論","Self-determination theory","a","内発的動機は、自律性・有能感・関係性の3つが満たされたときに生まれる。","動機づけ施策は、この3つのどれを満たすのかで点検できる。多くの施策はどれも満たしていない。","","known"],["目標勾配効果","Goal-gradient effect","b","ゴールに近づくほど努力が増す。スタンプカードにあらかじめ2個押されていると完走率が上がる。","進捗を可視化し、ゼロからではなく「途中から」に見せる。","","known"],["ツァイガルニク効果","Zeigarnik effect","c","完了した課題より、中断された課題のほうがよく記憶されるという説。","","再現性は安定しない。「中途半端に切ると続きが気になる」という体験知として扱う程度に。","known"],["進捗の法則","Progress principle","b","仕事における良い日とは、意味のある仕事が前に進んだ日。小さな前進が、感情と創造性を最も強く支える。","進捗を妨げる要因を取り除くほうが、動機づけ施策そのものより効く。","","known"],["ネガティビティ・バイアス","Negativity bias","a","否定的な出来事は、同程度の肯定的な出来事より強く、長く影響する。","フィードバックは量ではなく順番と具体性。叱責1回の影響は、賞賛1回では釣り合わない。","","known"],["実行意図","Implementation intentions","a","「いつ、どこで、何をするか」を if-then 形式で具体化すると、実行率が大きく上がる。","研修や面談の締めは、意気込みではなく if-then で。「次の月曜の朝に、〜する」。","","known"],["感情労働","Emotional labor","a","感情を職務として管理する労働には2種類ある。表情だけ作る「表層演技」は消耗と燃え尽きを招き、相手の状況を実際に想像して感情のほうを寄せる「深層演技」は招きにくい。","「笑顔で対応しろ」という指示は表層演技を強いる。相手の事情を先に共有するほうが、同じ対応を低い消耗で実現できる。","","known,group"]]}];
+
+  var EVL = { a: "確立", b: "条件付き", c: "議論あり", x: "経験則" };
+  var SCL = { first: "初対面", known: "関係の中", group: "集団・組織", self: "自分の判断" };
+  var KEY = "shinri-hosoku-v2";
+  var TKEY = "shinri-hosoku-theme";
+
+  function blank() { return { cats: [], names: {}, moves: {}, edits: {}, scenes: {}, items: [], hidden: [] }; }
+
+  function load() {
+    var s = blank();
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (!raw) return s;
+      var p = JSON.parse(raw);
+      if (!p || typeof p !== "object") return s;
+      if (Array.isArray(p.cats)) s.cats = p.cats;
+      if (Array.isArray(p.items)) s.items = p.items;
+      if (Array.isArray(p.hidden)) s.hidden = p.hidden;
+      ["names", "moves", "edits", "scenes"].forEach(function (k) {
+        if (p[k] && typeof p[k] === "object") s[k] = p[k];
+      });
+    } catch (e) {}
+    return s;
+  }
+
+  var store = load();
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(store)); }
+    catch (e) { msg("io-msg", "保存できませんでした。ブラウザでサイトデータが無効になっている可能性があります。"); }
+  }
+
+  function uid() { return "u" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+  function sceneList(s) { return String(s || "").split(",").filter(Boolean); }
+
+  function categories() {
+    var out = BASE.map(function (s) {
+      return { id: s.id, title: store.names[s.id] || s.title, en: s.en, note: s.note, builtin: true };
+    });
+    store.cats.forEach(function (c) {
+      out.push({ id: c.id, title: store.names[c.id] || c.title, en: "MINE", note: c.note || "", builtin: false });
+    });
+    return out;
+  }
+
+  function entries() {
+    var out = [];
+    BASE.forEach(function (sec, si) {
+      sec.items.forEach(function (it, ii) {
+        var id = "b" + si + "-" + ii;
+        var e = {
+          id: id, builtin: true, cat: store.moves[id] || sec.id,
+          name: it[0], en: it[1], ev: it[2], def: it[3], use: it[4] || "", warn: it[5] || "",
+          scene: store.scenes[id] || it[6] || ""
+        };
+        var ov = store.edits[id];
+        if (ov) { ["name", "en", "ev", "def", "use", "warn"].forEach(function (k) { if (ov[k] !== undefined) e[k] = ov[k]; }); }
+        out.push(e);
+      });
+    });
+    store.items.forEach(function (it) {
+      out.push({
+        id: it.id, builtin: false, cat: it.cat, name: it.name, en: it.en || "",
+        ev: it.ev || "x", def: it.def || "", use: it.use || "", warn: it.warn || "", scene: it.scene || ""
+      });
+    });
+    return out.filter(function (e) { return store.hidden.indexOf(e.id) === -1; });
+  }
+
+  var $ = function (id) { return document.getElementById(id); };
+  var index = $("index"), tocList = $("toc-list"), countEl = $("count"), emptyEl = $("empty"), qEl = $("q");
+  var panel = $("panel"), panelTitle = $("panel-title"), form = $("entry-form");
+  var evOn = {}, scOn = {}, editing = null, pending = {}, total = 0, cache = [];
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  function msg(id, t) { var el = $(id); if (el) el.textContent = t || ""; }
+  function findEntry(id) {
+    for (var i = 0; i < cache.length; i++) if (cache[i].id === id) return cache[i];
+    return null;
+  }
+
+  function render() {
+    var cats = categories();
+    cache = entries();
+
+    var byCat = {};
+    cats.forEach(function (c) { byCat[c.id] = []; });
+    var orphan = [];
+    cache.forEach(function (e) { (byCat[e.cat] ? byCat[e.cat] : orphan).push(e); });
+    if (orphan.length && cats.length) byCat[cats[0].id] = byCat[cats[0].id].concat(orphan);
+
+    var optsHtml = cats.map(function (c) {
+      return '<option value="' + esc(c.id) + '">' + esc(c.title) + "</option>";
+    }).join("");
+
+    var n = 0, html = "", toc = "";
+
+    cats.forEach(function (c) {
+      var list = byCat[c.id] || [];
+      toc += '<li><a href="#' + esc(c.id) + '">' + esc(c.title) + "<span>" + list.length + "</span></a></li>";
+      html += '<section class="section" id="' + esc(c.id) + '" data-section>';
+      html += '<div class="section-head"><h2><b>' + esc(c.en || "") + "</b>" + esc(c.title) + "</h2></div>";
+      if (c.note) html += '<p class="section-note">' + esc(c.note) + "</p>";
+
+      list.forEach(function (e) {
+        n++;
+        var no = (n < 10 ? "0" : "") + n;
+        var sc = sceneList(e.scene);
+        var hay = [e.name, e.en, e.def, e.use, e.warn, c.title].join(" ").toLowerCase() + " " +
+                  sc.map(function (k) { return SCL[k] || ""; }).join(" ");
+        html += '<article class="entry" data-id="' + esc(e.id) + '" data-ev="' + esc(e.ev) +
+                '" data-scene="' + esc(sc.join(",")) + '" data-s="' + esc(hay) + '">';
+        html += '<div class="no">' + no + '</div><div class="body">';
+        html += '<div class="title-row"><h3>' + esc(e.name) + "</h3>";
+        if (e.en) html += '<span class="en">' + esc(e.en) + "</span>";
+        html += '<span class="ev ev-' + esc(e.ev) + '">' + (EVL[e.ev] || "") + "</span>";
+        if (sc.length) {
+          html += '<span class="scenes">' + sc.map(function (k) {
+            return '<span class="scene">' + esc(SCL[k] || k) + "</span>";
+          }).join("") + "</span>";
+        }
+        if (!e.builtin) html += '<span class="mine">自分の追加</span>';
+        html += "</div>";
+        html += '<p class="def">' + esc(e.def) + "</p>";
+        if (e.use) html += '<div class="meta use"><span class="lbl">実務</span><p>' + esc(e.use) + "</p></div>";
+        if (e.warn) html += '<div class="meta warn"><span class="lbl">注意</span><p>' + esc(e.warn) + "</p></div>";
+        html += '<div class="entry-tools">';
+        html += '<select data-move="' + esc(e.id) + '" aria-label="分類を変更">' + optsHtml + "</select>";
+        html += '<button type="button" class="link-btn" data-edit="' + esc(e.id) + '">編集</button>';
+        html += '<button type="button" class="link-btn" data-del="' + esc(e.id) + '">' + (e.builtin ? "非表示" : "削除") + "</button>";
+        html += "</div></div></article>";
+      });
+      html += "</section>";
+    });
+
+    index.innerHTML = html;
+    tocList.innerHTML = toc;
+
+    Array.prototype.forEach.call(index.querySelectorAll("select[data-move]"), function (sel) {
+      var e = findEntry(sel.closest(".entry").getAttribute("data-id"));
+      if (e) sel.value = e.cat;
+    });
+
+    var fcat = $("f-cat"), keep = fcat.value;
+    fcat.innerHTML = optsHtml;
+    if (keep) fcat.value = keep;
+
+    $("ev-x-btn").hidden = !cache.some(function (e) { return e.ev === "x"; });
+    $("eyebrow-count").textContent = cache.length;
+    $("btn-restore").hidden = store.hidden.length === 0;
+    if (store.hidden.length) $("btn-restore").textContent = "非表示 " + store.hidden.length + " 件を戻す";
+
+    renderCatList(cats, byCat);
+    total = cache.length;
+    applyFilters();
+  }
+
+  function renderCatList(cats, byCat) {
+    $("cat-list").innerHTML = cats.map(function (c) {
+      return '<li><input type="text" value="' + esc(c.title) + '" data-rename="' + esc(c.id) + '" aria-label="分類名">' +
+             '<span class="n">' + ((byCat[c.id] || []).length) + "</span>" +
+             (c.builtin ? "" : '<button type="button" class="link-btn" data-delcat="' + esc(c.id) + '">削除</button>') + "</li>";
+    }).join("");
+  }
+
+  function applyFilters() {
+    var q = qEl.value.trim().toLowerCase();
+    var evs = Object.keys(evOn).filter(function (k) { return evOn[k]; });
+    var scs = Object.keys(scOn).filter(function (k) { return scOn[k]; });
+    var shown = 0;
+
+    Array.prototype.forEach.call(index.querySelectorAll(".entry"), function (el) {
+      var okQ = !q || el.getAttribute("data-s").indexOf(q) !== -1;
+      var okE = evs.length === 0 || evs.indexOf(el.getAttribute("data-ev")) !== -1;
+      var mine = el.getAttribute("data-scene").split(",");
+      var okS = scs.length === 0 || scs.some(function (k) { return mine.indexOf(k) !== -1; });
+      var vis = okQ && okE && okS;
+      el.hidden = !vis;
+      if (vis) shown++;
+    });
+    Array.prototype.forEach.call(index.querySelectorAll("[data-section]"), function (sec) {
+      sec.hidden = !sec.querySelector(".entry:not([hidden])");
+    });
+
+    countEl.textContent = shown + " / " + total;
+    emptyEl.classList.toggle("show", shown === 0);
+    $("clear-filters").hidden = !(q || evs.length || scs.length);
+  }
+
+  function twoStep(btn, key, label, action) {
+    if (pending[key]) { clearTimeout(pending[key]); delete pending[key]; action(); return; }
+    var original = btn.textContent;
+    btn.textContent = label;
+    pending[key] = setTimeout(function () {
+      delete pending[key];
+      if (btn.isConnected) btn.textContent = original;
+    }, 4000);
+  }
+
+  /* ---- filters ---- */
+  qEl.addEventListener("input", applyFilters);
+
+  Array.prototype.forEach.call(document.querySelectorAll(".ev-btn"), function (btn) {
+    btn.addEventListener("click", function () {
+      var k = btn.getAttribute("data-ev");
+      evOn[k] = !evOn[k];
+      btn.setAttribute("aria-pressed", evOn[k] ? "true" : "false");
+      applyFilters();
+    });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll(".sc-btn"), function (btn) {
+    btn.addEventListener("click", function () {
+      var k = btn.getAttribute("data-scene");
+      scOn[k] = !scOn[k];
+      btn.setAttribute("aria-pressed", scOn[k] ? "true" : "false");
+      applyFilters();
+    });
+  });
+
+  $("clear-filters").addEventListener("click", function () {
+    evOn = {}; scOn = {}; qEl.value = "";
+    Array.prototype.forEach.call(document.querySelectorAll(".ev-btn,.sc-btn"), function (b) {
+      b.setAttribute("aria-pressed", "false");
+    });
+    applyFilters();
+  });
+
+  /* ---- toolbar ---- */
+  $("btn-organize").addEventListener("click", function () {
+    var on = document.body.classList.toggle("organize");
+    this.setAttribute("aria-pressed", on ? "true" : "false");
+  });
+
+  function setScenes(val) {
+    var list = sceneList(val);
+    Array.prototype.forEach.call(document.querySelectorAll(".f-scene"), function (cb) {
+      cb.checked = list.indexOf(cb.value) !== -1;
+    });
+  }
+  function getScenes() {
+    return Array.prototype.filter.call(document.querySelectorAll(".f-scene"), function (cb) { return cb.checked; })
+      .map(function (cb) { return cb.value; }).join(",");
+  }
+  function resetForm() {
+    form.reset();
+    $("f-ev").value = "x";
+    setScenes("known");
+    editing = null;
+    panelTitle.textContent = "項目を追加";
+    $("f-submit").textContent = "追加する";
+  }
+
+  $("btn-add").addEventListener("click", function () {
+    resetForm();
+    msg("f-msg", "");
+    panel.hidden = false;
+    panel.scrollIntoView({ behavior: "smooth", block: "start" });
+    $("f-name").focus();
+  });
+  $("panel-close").addEventListener("click", function () { panel.hidden = true; });
+  $("f-cancel").addEventListener("click", function () { resetForm(); msg("f-msg", ""); });
+
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var rec = {
+      name: $("f-name").value.trim(), en: $("f-en").value.trim(), cat: $("f-cat").value,
+      ev: $("f-ev").value, scene: getScenes(), def: $("f-def").value.trim(),
+      use: $("f-use").value.trim(), warn: $("f-warn").value.trim()
+    };
+    if (!rec.name || !rec.def) { msg("f-msg", "名称と内容は必須です。"); return; }
+
+    if (editing && editing.charAt(0) === "b") {
+      store.edits[editing] = { name: rec.name, en: rec.en, ev: rec.ev, def: rec.def, use: rec.use, warn: rec.warn };
+      store.moves[editing] = rec.cat;
+      store.scenes[editing] = rec.scene;
+      msg("f-msg", "更新しました。");
+    } else if (editing) {
+      store.items = store.items.map(function (it) {
+        return it.id === editing ? {
+          id: it.id, name: rec.name, en: rec.en, cat: rec.cat, ev: rec.ev,
+          scene: rec.scene, def: rec.def, use: rec.use, warn: rec.warn
+        } : it;
+      });
+      msg("f-msg", "更新しました。");
+    } else {
+      store.items.push({
+        id: uid(), name: rec.name, en: rec.en, cat: rec.cat, ev: rec.ev,
+        scene: rec.scene, def: rec.def, use: rec.use, warn: rec.warn
+      });
+      msg("f-msg", "追加しました。");
+    }
+    save();
+    resetForm();
+    render();
+  });
+
+  /* ---- per entry ---- */
+  index.addEventListener("change", function (ev) {
+    var sel = ev.target.closest("select[data-move]");
+    if (!sel) return;
+    var id = sel.getAttribute("data-move");
+    if (id.charAt(0) === "b") store.moves[id] = sel.value;
+    else store.items = store.items.map(function (it) {
+      return it.id === id ? Object.assign({}, it, { cat: sel.value }) : it;
+    });
+    save();
+    render();
+  });
+
+  index.addEventListener("click", function (ev) {
+    var eb = ev.target.closest("[data-edit]");
+    if (eb) {
+      var e = findEntry(eb.getAttribute("data-edit"));
+      if (!e) return;
+      editing = e.id;
+      $("f-name").value = e.name; $("f-en").value = e.en; $("f-def").value = e.def;
+      $("f-use").value = e.use; $("f-warn").value = e.warn; $("f-ev").value = e.ev;
+      setScenes(e.scene);
+      panel.hidden = false;
+      $("f-cat").value = e.cat;
+      panelTitle.textContent = "項目を編集";
+      $("f-submit").textContent = "更新する";
+      msg("f-msg", "");
+      panel.scrollIntoView({ behavior: "smooth", block: "start" });
+      $("f-name").focus();
+      return;
+    }
+    var db = ev.target.closest("[data-del]");
+    if (db) {
+      var id = db.getAttribute("data-del");
+      twoStep(db, "del" + id, "もう一度押す", function () {
+        if (id.charAt(0) === "b") { if (store.hidden.indexOf(id) === -1) store.hidden.push(id); }
+        else store.items = store.items.filter(function (it) { return it.id !== id; });
+        save();
+        render();
+      });
+    }
+  });
+
+  /* ---- categories ---- */
+  $("cat-list").addEventListener("change", function (ev) {
+    var inp = ev.target.closest("input[data-rename]");
+    if (!inp) return;
+    var id = inp.getAttribute("data-rename"), v = inp.value.trim();
+    if (v) store.names[id] = v; else delete store.names[id];
+    save();
+    render();
+  });
+
+  $("cat-list").addEventListener("click", function (ev) {
+    var b = ev.target.closest("[data-delcat]");
+    if (!b) return;
+    var id = b.getAttribute("data-delcat");
+    twoStep(b, "cat" + id, "もう一度押す", function () {
+      var fallback = BASE[0].id;
+      store.cats = store.cats.filter(function (c) { return c.id !== id; });
+      store.items = store.items.map(function (it) {
+        return it.cat === id ? Object.assign({}, it, { cat: fallback }) : it;
+      });
+      Object.keys(store.moves).forEach(function (k) { if (store.moves[k] === id) delete store.moves[k]; });
+      delete store.names[id];
+      save();
+      render();
+    });
+  });
+
+  $("cat-form").addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var name = $("c-name").value.trim();
+    if (!name) return;
+    store.cats.push({ id: uid(), title: name, note: $("c-note").value.trim() });
+    $("c-name").value = ""; $("c-note").value = "";
+    save();
+    render();
+  });
+
+  /* ---- import / export ---- */
+  var ioText = $("io-text");
+
+  $("btn-export").addEventListener("click", function () {
+    ioText.hidden = false;
+    ioText.value = JSON.stringify(store);
+    ioText.focus();
+    ioText.select();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(ioText.value).then(function () {
+        msg("io-msg", "クリップボードにコピーしました。移したい端末の「貼り付けて読み込み」に貼ってください。");
+      }, function () {
+        msg("io-msg", "下のテキストを選択してコピーしてください。");
+      });
+    } else {
+      msg("io-msg", "下のテキストを選択してコピーしてください。");
+    }
+  });
+
+  function ingest(text) {
+    try {
+      var p = JSON.parse(text);
+      var s = blank();
+      if (Array.isArray(p.cats)) s.cats = p.cats;
+      if (Array.isArray(p.items)) s.items = p.items;
+      if (Array.isArray(p.hidden)) s.hidden = p.hidden;
+      ["names", "moves", "edits", "scenes"].forEach(function (k) { if (p[k]) s[k] = p[k]; });
+      store = s;
+      save();
+      render();
+      msg("io-msg", "読み込みました（自分の追加 " + store.items.length + " 件）。");
+      return true;
+    } catch (e) {
+      msg("io-msg", "読み込めませんでした。このページが書き出したテキストを貼ってください。");
+      return false;
+    }
+  }
+
+  $("btn-import").addEventListener("click", function () {
+    if (ioText.hidden || !ioText.value.trim()) {
+      ioText.hidden = false;
+      ioText.value = "";
+      ioText.focus();
+      msg("io-msg", "書き出したテキストをここに貼り付けて、もう一度このボタンを押してください。");
+      return;
+    }
+    if (ingest(ioText.value.trim())) { ioText.value = ""; ioText.hidden = true; }
+  });
+
+  /* __FILEIO_START__ */
+  if (MODE === "standalone") {
+    $("btn-download").addEventListener("click", function () {
+      var blob = new Blob([JSON.stringify(store, null, 2)], { type: "application/json" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      var d = new Date();
+      a.href = url;
+      a.download = "shinri-hosoku-" + d.getFullYear() + ("0" + (d.getMonth() + 1)).slice(-2) + ("0" + d.getDate()).slice(-2) + ".json";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      msg("io-msg", "ファイルに保存しました。");
+    });
+    $("file-import").addEventListener("change", function () {
+      var f = this.files && this.files[0];
+      if (!f) return;
+      var r = new FileReader();
+      r.onload = function () { ingest(String(r.result)); };
+      r.readAsText(f);
+      this.value = "";
+    });
+  }
+  /* __FILEIO_END__ */
+
+  $("btn-restore").addEventListener("click", function () {
+    store.hidden = [];
+    save();
+    render();
+    msg("io-msg", "非表示を戻しました。");
+  });
+
+  $("btn-reset").addEventListener("click", function () {
+    var btn = this;
+    twoStep(btn, "reset", "本当に消す（もう一度押す）", function () {
+      store = blank();
+      save();
+      render();
+      msg("io-msg", "自分の変更を消して、元の状態に戻しました。");
+    });
+  });
+
+  /* ---- theme ---- */
+  (function () {
+    var btn = $("theme-btn"), root = document.documentElement;
+    var modes = ["auto", "light", "dark"];
+    var labels = { auto: "表示：自動", light: "表示：ライト", dark: "表示：ダーク" };
+    var mode = "auto";
+    try { var s = localStorage.getItem(TKEY); if (modes.indexOf(s) !== -1) mode = s; } catch (e) {}
+    function paint() {
+      if (mode === "auto") root.removeAttribute("data-theme");
+      else root.setAttribute("data-theme", mode);
+      btn.textContent = labels[mode];
+    }
+    btn.addEventListener("click", function () {
+      mode = modes[(modes.indexOf(mode) + 1) % modes.length];
+      try { localStorage.setItem(TKEY, mode); } catch (e) {}
+      paint();
+    });
+    paint();
+  })();
+
+  setScenes("known");
+  render();
+})();
+</script>
+</body>
+</html>
